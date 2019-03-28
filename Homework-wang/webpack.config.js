@@ -11,9 +11,8 @@ module.exports = {
         // noParse://, //对于一些单独的包（没有引用其他第三方包的） 不去解析他的依赖关系 ， 优化打包速度
         rules:[
             {
-                test: /\.sass$/,
-                use: [
-                    'style-loader', 'css-loader','postcss-loader', 'sass-loader']
+                test: /\.(sa|sc|c)ss$/,
+                use: ['style-loader', 'css-loader','postcss-loader', 'sass-loader']
             },
             {
                 test:/.js$/,
@@ -36,6 +35,17 @@ module.exports = {
                         presets:["@babel/preset-env",'@babel/preset-react'] 
                     }
                 }]
+            },
+            {   // 对字体资源文件使用url-loader
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'url-loader',
+                query: {
+                    limit: 10000,
+                }
+            },
+            {   // 优化svg文件 
+                test: /\.svg$/,
+                use: ['svg-inline-loader']
             }
         ]
     },
