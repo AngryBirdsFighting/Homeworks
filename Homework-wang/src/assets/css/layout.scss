@@ -2,35 +2,39 @@
     background: rgb(243, 243, 243);
     width: 100%;
     .main-wrapper{
-        margin: 0 auto;
-        background:#fff;
         .header-container{
+            position: relative;
             z-index: 50;
-            padding: 0 20px 0 20px;
+            background:#fff;
+            width: 100%;
             height: 70px;
             .header{
-                padding-top: 15px;
+                margin: 0 auto;
+                padding: 15px 20px 0 20px;
                 .icon-navicon{
                     width: 40px;
                     height: 40px;
                     line-height: 40px;
                 }
                 .avatar{
+                    margin-right: 40px;
                     display: inline-block;
                     border-radius: 50%;
                 }
             }
         }
         .container{
+            margin: 0 auto;
             display: flex;
             flex-direction: row;
             .menu-container{
-                position: relative;
+                position: absolute;
                 width: 200px;
-                height: 870px;
+                height: 940px;
                 background: #2d4054
             }
             .content-container{
+                margin-left: 200px;
                 background: rgb(243, 243, 243);
                 flex: 1;
                 height: 870px;
@@ -40,28 +44,27 @@
 }
 @media screen and (min-width: 1200px) {
     .main-wrapper{
-        width: 1200px;
-        .header-container{
+        .header{
+            width: 1200px;
             .icon-navicon{
                 display: none;
             }
         }
-        .menu-container{
-            top: -70px;
-            z-index: 1;
+        .container{
+            width: 1200px;
         }
     }
 }
 @media screen and (max-width: 1024px) {
     .main-wrapper{
-        width: 100%;
-        .header-container{
+        .header{
+            width: 100%;
             .icon-navicon{
                 display: block;
             }
         }
-        .menu-container{
-            top: -70px;
+        .container{
+            width: 100%;
         }
     }
 }
