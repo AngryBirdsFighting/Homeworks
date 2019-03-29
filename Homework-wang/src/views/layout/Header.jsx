@@ -2,11 +2,11 @@
  * @Author: Wang Chao 
  * @Date: 2019-01-21 20:47:14 
  * @Last Modified by: Wang Chao
- * @Last Modified time: 2019-01-24 20:10:37
+ * @Last Modified time: 2019-03-29 11:12:57
  * @Description:  
  */
 import React,{Component} from "react"
-const newad = require('../../assets/font icons/fonts/cruise.svg')
+import avatar from "../../assets/logo/avatar.jpg"
 
 class Home extends Component{
     componentWillMount() {
@@ -15,10 +15,11 @@ class Home extends Component{
     render(){
         return(
             <div>
-               <header className="header">
-               <i className="icon icon-navicon"></i>
-               <i className="aaa"></i>
-               <svg style={{fill: "#fff"}} dangerouslySetInnerHTML={{__html: newad }} />
+               <header className="header-container">
+                    <div className="header">
+                        <i className="fl icon icon-navicon"></i>
+                        <img  className="fr avatar"  src={avatar} alt="头像" height="40px" />
+                    </div>
                </header>
             </div>
         )

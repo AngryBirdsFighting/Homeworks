@@ -1,14 +1,13 @@
 let path = require("path"), webpack = require("webpack")
 let HtmlWebpackPlugin = require("html-webpack-plugin")
 module.exports = {
-    mode:"development", // 生产环境有tree-shaking模式， 会自动去除掉 import***** 中没有使用的模块， scope hosting 模式， 会自动省略一些可以简化的代码
+    mode:"development", 
     entry:'./src/index.js',
     output:{
         filename:'bundle.js',
         path:path.resolve(__dirname, 'dist')
     },
     module:{
-        // noParse://, //对于一些单独的包（没有引用其他第三方包的） 不去解析他的依赖关系 ， 优化打包速度
         rules:[
             {
                 test: /\.(sa|sc|c)ss$/,
@@ -36,6 +35,19 @@ module.exports = {
                     }
                 }]
             },
+            {
+                test: /\.(jpg|png|svg)$/,
+                use: [{
+                    loader: "url-loader",
+                    query: {
+                        limit: 40000,
+                        name: "image/[name]-[hash:5].[ext]"
+                    }
+                },
+                {
+                    loader: "image-webpack-loader"
+                }]
+            },
             {   // 对字体资源文件使用url-loader
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
                 loader: 'url-loader',
@@ -43,10 +55,10 @@ module.exports = {
                     limit: 10000,
                 }
             },
-            {   // 优化svg文件 
-                test: /\.svg$/,
-                use: ['svg-inline-loader']
-            }
+            // {   // 优化svg文件 
+            //     test: /\.svg$/,
+            //     use: ['svg-inline-loader']
+            // }
         ]
     },
     plugins:[

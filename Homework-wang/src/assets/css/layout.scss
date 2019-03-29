@@ -1,13 +1,68 @@
 .main{
     background: rgb(243, 243, 243);
-    .header{
+    width: 100%;
+    .main-wrapper{
+        margin: 0 auto;
         background:#fff;
-        height: 70px;
-        width: 100%
+        .header-container{
+            z-index: 50;
+            padding: 0 20px 0 20px;
+            height: 70px;
+            .header{
+                padding-top: 15px;
+                .icon-navicon{
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                }
+                .avatar{
+                    display: inline-block;
+                    border-radius: 50%;
+                }
+            }
+        }
+        .container{
+            display: flex;
+            flex-direction: row;
+            .menu-container{
+                position: relative;
+                width: 200px;
+                height: 870px;
+                background: #2d4054
+            }
+            .content-container{
+                background: rgb(243, 243, 243);
+                flex: 1;
+                height: 870px;
+            }
+        }
     }
-    .aaa{
-        font-size: 50px;
-        background: url('../font icons/fonts/cruise.svg') no-repeat center center;
-    }
-
 }
+@media screen and (min-width: 1200px) {
+    .main-wrapper{
+        width: 1200px;
+        .header-container{
+            .icon-navicon{
+                display: none;
+            }
+        }
+        .menu-container{
+            top: -70px;
+            z-index: 1;
+        }
+    }
+}
+@media screen and (max-width: 1024px) {
+    .main-wrapper{
+        width: 100%;
+        .header-container{
+            .icon-navicon{
+                display: block;
+            }
+        }
+        .menu-container{
+            top: -70px;
+        }
+    }
+}
+
