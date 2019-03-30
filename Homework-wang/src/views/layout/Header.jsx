@@ -7,21 +7,44 @@
  */
 import React,{Component} from "react"
 import avatar from "../../assets/logo/avatar.jpg"
+import { connect} from "react-redux";
+import { setAugetListAsync } from "../../redux/action/index.js";
 
 class Home extends Component{
+    state={
+        avatarDialog:true,
+        icon: "icon-angle-up"
+    }
+    avatarDialogHandler(){
+        this.setState({
+            avatarDialog: !this.state.avatarDialog
+        })
+        if(this.state.avatarDialog){
+            this.setState({
+                icon: "icon-angle-down"
+            })
+        }else{
+            this.setState({
+                icon: "icon-angle-up"
+            })
+        }
+
+    }
     componentWillMount() {
         console.log(this.props)
+        this.props.setAugetListAsync()
     }
+
     render(){
         return(
             <div>
                <header className="header-container">
                     <div className="header">
                         <i className="fl icon icon-navicon"></i>
-                        <i className="fr icon icon-angle-down"></i>
+                        <i className={"fr icon "+ this.state.icon } onClick = {() => this.avatarDialogHandler()}></i>
                         <img  className="fr avatar"  src={avatar} alt="头像" height="40px" />
                         <div className="clear"></div>
-                        <ul>
+                        {!this.state.avatarDialog ? <ul>
                             <li>
                                 <i className="icon-id-card"></i>
                                 <span>Profile</span>
@@ -30,12 +53,13 @@ class Home extends Component{
                                 <i className="icon-sign-in"></i>
                                 <span>Sign Out</span>
                             </li>
-                        </ul>
+                        </ul>: null}
+                        
                     </div>
                </header>
             </div>
         )
     }
 }
-
+Home = connect(state =>({menu:state.agentList}), {setAugetListAsync})(Home)
 export default Home

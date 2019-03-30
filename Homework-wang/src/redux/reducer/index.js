@@ -1,9 +1,8 @@
 import * as type from '../action/type.js';
 import { combineReducers } from 'redux';
-const permissionData = (state = { status:true, defaultPath: "", data :[]}, action) => {
-    
+const agentList = (state = { status:true, defaultPath: "", data :[]}, action) => {
     switch(action.type){
-        case type.SET_PERMISSION:
+        case type.SET_AGENT_LIST:
         return {...state , status:true, data:action.data, defaultPath: action.defaultPath, auths: action.auths}
         default: 
         return {...state}
@@ -11,5 +10,5 @@ const permissionData = (state = { status:true, defaultPath: "", data :[]}, actio
 }
 
 export default combineReducers({
-    permissionData
+    agentList
 });

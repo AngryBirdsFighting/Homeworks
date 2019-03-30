@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose} from "redux"
 import thunk from "redux-thunk"
-import reducer from "../reducer/"
+import reducer from "../reducer/index.js"
 
 //添加调试工具
 // const reduxDevtools = window.

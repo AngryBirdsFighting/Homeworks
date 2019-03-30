@@ -1,6 +1,4 @@
-
-import { isEmptyByObj } from "../utils/tools";
-
+import Config from "../config/"
 class Fetch {
     constructor(){
         this.baseUrl = Config.baseUrl; 
