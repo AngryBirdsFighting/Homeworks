@@ -19,14 +19,33 @@ class Home extends Component{
                         <li>
                             <div>
                                 <i className="icon icon-cog"></i>
+                                <span className="statistics-type">dddd</span>
+                                <span className="statistics-count">3</span>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <i className="icon icon-coffee"></i>
+                                <span className="statistics-type">dddd</span>
+                                <span className="statistics-count">5</span>
                             </div>
                         </li>
-                        <li></li>
+                        <li>
+                            <ul>
+                                <li>
+                                    <span>ALL</span>
+                                    <span>8</span>
+                                </li>
+                                <li>
+                                    <span>ALL</span>
+                                    <span>8</span>
+                                </li>
+                                <li>
+                                    <span>ALL</span>
+                                    <span>8</span>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>

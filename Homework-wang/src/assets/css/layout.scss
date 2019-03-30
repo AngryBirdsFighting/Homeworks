@@ -29,7 +29,6 @@
             flex-direction: row;
             .menu-container{
                 position: absolute;
-                width: 270px;
                 height: 940px;
                 background: #2d4054;
                 .menu-ul{
@@ -48,7 +47,6 @@
                                 color: #00B4CF;
                             }
                         }
-
                         i{
                             display: inline-block;
                             padding: 0 15px 0 30px; 
@@ -93,8 +91,6 @@
                 width: 100%;
                 height: 870px;
                 flex: 1;
-                margin-left: 270px;
-                padding-left: 30px;
             }
         }
     }
@@ -110,11 +106,30 @@
         .container{
             width: 1170px;
             .menu-container{
+                width: 270px;
                 top: 0;
             }
         }
     }
 }
+@media screen and (max-width: 1200px) and (min-width: 1024px) {
+    .main-wrapper{
+        .header{
+            width: 100%;
+            .icon-navicon{
+                display: none;
+            }
+        }
+        .container{
+            width: 100%;
+            .menu-container{
+                width: 250px;
+                top: 0;
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 1024px) {
     .main-wrapper{
         .header{
@@ -125,6 +140,10 @@
         }
         .container{
             width: 100%;
+            .menu-container{
+                width: 250px;
+                top: 0;
+            }
         }
     }
 }
