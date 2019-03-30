@@ -8,7 +8,16 @@ const agentList = (state = { status:true, defaultPath: "", data :[]}, action) =>
         return {...state}
     }
 }
-
+const menuZIndex = (state = true, action) => {
+    switch(action.type){
+        case type.SET_MENU_Z_INDEX:
+        state = action.data
+        return state
+        default: 
+        return state
+    }
+}
 export default combineReducers({
-    agentList
+    agentList,
+    menuZIndex
 });

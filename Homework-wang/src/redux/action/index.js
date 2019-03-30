@@ -7,7 +7,6 @@
  */
 import * as type from './type';
 import Fetch from "../../fetch/index"
-// import {setToken} from "../../utils/tools"
 let fetch = new Fetch()
 
 let getAgentList = () => {
@@ -54,10 +53,20 @@ const setAgentList = (data, defaultPath,auths) =>(
      auths
     }
 )
+const setMenuZIndex = (data) =>(
+    {type: type.SET_MENU_Z_INDEX,
+     data
+    }
+)
 export const  setAugetListAsync = () => {
     return dispatch => {
         getAgentList().then( res => {
             dispatch(setAgentList(res.data))
         }).catch()
+    }
+}
+export const  setMenuZIndexSync = (data) => {
+    return dispatch => {
+        dispatch(setMenuZIndex(data))
     }
 }

@@ -60,9 +60,9 @@
             flex-direction: row;
             .menu-container{
                 position: absolute;
-                @media screen and (max-width: 1024px) {
-                    z-index: -1;
-                }
+                // @media screen and (max-width: 1024px) {
+                //     z-index: -1;
+                // }
                 background: #2d4054;
                 .menu-ul{
                     display: inline-block;

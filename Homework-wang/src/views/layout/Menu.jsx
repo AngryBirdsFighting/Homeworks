@@ -6,6 +6,8 @@
  * @Description:  
  */
 import React,{Component} from "react"
+import { connect} from "react-redux";
+import { setAugetListAsync, setMenuZIndexSync} from "../../redux/action/index.js";
 class Home extends Component{
     state={
         height:"",
@@ -17,13 +19,15 @@ class Home extends Component{
          this.setState({
              height:document.documentElement.clientHeight + "px"
          })
+         document.documentElement.clientWidth < 1024 ? this.props.setMenuZIndexSync(!this.props.menuZIndex) : null
     }
     render(){
+        let zIndex = this.props.menuZIndex ? 100 : -1
         return(
-            <menu style={{height:this.state.height}} className="menu-container">
+            <menu style={{height:this.state.height, zIndex: zIndex}} className="menu-container">
                 <ul className="menu-ul">
                     <li className="active">
-                        <i className="icon-dashboard"></i>
+                        <i className="icon-dashboard" onClick = {() => this.props.setMenuZIndexSync(!this.props.menuZIndex)}></i>
                         <span>DASHBOARD</span>
                     </li>
                     <li>
@@ -62,5 +66,5 @@ class Home extends Component{
         )
     }
 }
-
+Home = connect(state =>({menu:state.agentList, menuZIndex: state.menuZIndex}), {setAugetListAsync, setMenuZIndexSync})(Home)
 export default Home

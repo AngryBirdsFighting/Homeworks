@@ -8,12 +8,13 @@
 import React,{Component} from "react"
 import avatar from "../../assets/logo/avatar.jpg"
 import { connect} from "react-redux";
-import { setAugetListAsync } from "../../redux/action/index.js";
+import { setAugetListAsync, setMenuZIndexSync} from "../../redux/action/index.js";
 
 class Home extends Component{
     state={
         avatarDialog:true,
-        icon: "icon-angle-up"
+        icon: "icon-angle-up",
+        menuStatus:true,
     }
     avatarDialogHandler(){
         this.setState({
@@ -28,7 +29,11 @@ class Home extends Component{
                 icon: "icon-angle-up"
             })
         }
-
+    }
+    menuHandler(){
+        this.setState({
+            menuStatus: !this.state.menuStatus
+        })
     }
     componentWillMount() {
         console.log(this.props)
@@ -40,11 +45,12 @@ class Home extends Component{
             <div>
                <header className="header-container">
                     <div className="header">
-                        <i className="fl icon icon-navicon"></i>
+                        <i className="fl icon icon-navicon" onClick = {() => this.props.setMenuZIndexSync(!this.props.menuZIndex)}></i>
                         <i className={"fr icon "+ this.state.icon } onClick = {() => this.avatarDialogHandler()}></i>
                         <img  className="fr avatar"  src={avatar} alt="头像" height="40px" />
                         <div className="clear"></div>
-                        {!this.state.avatarDialog ? <ul>
+                        {!this.state.avatarDialog ?
+                             <ul>
                             <li>
                                 <i className="icon-id-card"></i>
                                 <span>Profile</span>
@@ -61,5 +67,6 @@ class Home extends Component{
         )
     }
 }
-Home = connect(state =>({menu:state.agentList}), {setAugetListAsync})(Home)
+
+Home = connect(state =>({menu:state.agentList, menuZIndex: state.menuZIndex}), {setAugetListAsync, setMenuZIndexSync})(Home)
 export default Home
