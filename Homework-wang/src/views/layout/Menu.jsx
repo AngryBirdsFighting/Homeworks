@@ -15,7 +15,7 @@ class Home extends Component{
      }
      componentDidMount(){
          this.setState({
-             height:document.body.clientHeight + "px"
+             height:document.documentElement.clientHeight + "px"
          })
     }
     render(){
