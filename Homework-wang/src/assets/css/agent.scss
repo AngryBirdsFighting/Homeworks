@@ -63,18 +63,14 @@
     }
     .search{
         width: 100%;
-        height: 50px;
-        background: #fff;
         margin: 15px 0;
         color: #000;
         ul{
             display: inline-block;
             background: #fff;
-            width: 31%;
             li{
                 float: left;
                 display: inline-block;
-                width: 32.8%;
                 height: 47px;
                 line-height: 50px;
                 border-right: 1px solid #F3F3F3;
@@ -88,12 +84,10 @@
             }
         }
         .search-box{
-            width: 31%;
             height: 50px;
             line-height: 50px;
-            margin-left: 30px;
+            background: #fff;
             input{
-                width: 66%;
                 height: 25px;
                 border: 1px solid #ccc;
                 background-color: #f3f3f3;
@@ -114,6 +108,79 @@
                 display: inline-block;
                 &:nth-child(2){
                     color: #00B4CF;
+                }
+            }
+        }
+    }
+    .content{
+        margin-bottom: 15px;
+        background: #fff;
+        padding: 20px;
+        height: 80px;
+        color: #000;
+        .window{
+            height: 80px;
+            margin-right: 20px
+        }
+        i{
+            font-size: 16px;
+            margin-right: 10px;
+            vertical-align: middle;
+            color: #ccc;
+        }
+        .content-right{
+            display: inline-block;
+            width: 86%;
+            li{
+                display: inline-block;
+                height: 40px;
+                line-height: 40px;
+                .sp1{
+                    color: #00B4CF;
+                    font-weight: bolder;
+                    margin-right: 20px
+                }
+                .sp2{
+                    padding: 1px 10px;
+                    color: #fff;
+                    background: #ff9a2a;
+                    margin-right: 30px
+                }
+                .sp3{
+                    margin-right: 30px
+                }
+                .icon-plus{
+                    font-size: 18px;
+                    display: inline-block;
+                    padding: 2px 5px;
+                    background: #00B4CF;
+                    color: #fff;
+                }
+            }
+            .con-bottom{
+                span{
+                    background: #EFEFEF;
+                    padding: 3px 3px;
+                    font-size: 14px;
+                    margin-right: 10px;
+                    i{
+                        color: #000;
+                        margin-left: 5px;
+                        font-size: 16px;
+                        vertical-align: middle;
+                    }
+                }
+                li.fr{
+                    span{
+                        background: #00B4CF;
+                        color: #fff;
+                        padding: 3px 10px;
+                        i{
+                            color: #fff;
+                            font-size: 14px;
+                        }
+                        
+                    }
                 }
             }
         }
@@ -163,7 +230,7 @@
 @media screen and (max-width: 1024px) and (min-width: 768px) {
     .content-container{
         margin-left: 0;
-        padding-left: 20px;
+        padding: 0 20px;
         .statistics{
             & > li:nth-child(2){
                   margin-left: 20px;
@@ -186,6 +253,48 @@
     }
 }
 
+@media screen and (min-width: 1024px) {
+    .search{
+        height: 50px;
+        background: #fff;
+        ul{
+            width: 31%;
+            li{
+                width: 32.8%;
+            }
+        }
+        .search-box{
+            width: 31%;
+            margin-left: 30px;
+            input{
+                width: 66%;
+            }
+        }
+    }
+}
+@media screen and (max-width: 1023px) {
+    .search{
+        ul{
+            width: 100%;
+            margin-top: 60px;
+            li{
+                width: 33%;
+                &:nth-child(3){
+                    border: none
+                }
+            }
+        }
+        .search-box{
+            width: 100%;
+            margin-top: -110px;
+            text-align: center;
+            input{
+                width: 90%;
+            }
+        }
+    }
+}
+
 @media screen and (min-width: 768px) {
     .content-container{
         .statistics{
@@ -197,7 +306,7 @@
 }
 @media screen and  (max-width: 767px) and (min-width: 320px){
     .content-container{
-        padding-left: 5px;
+        padding: 0 5px;
         .statistics{
             & > li{
                 height: 90px;
