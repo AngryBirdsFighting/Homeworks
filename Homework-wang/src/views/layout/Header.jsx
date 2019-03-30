@@ -19,6 +19,7 @@ class Home extends Component{
                     <div className="header">
                         <i className="fl icon icon-navicon"></i>
                         <img  className="fr avatar"  src={avatar} alt="头像" height="40px" />
+                        <div className="clear"></div>
                     </div>
                </header>
             </div>

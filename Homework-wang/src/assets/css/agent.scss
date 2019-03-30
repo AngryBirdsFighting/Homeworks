@@ -1,0 +1,50 @@
+.content-container{
+    .statistics{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap ;
+        margin-top: 15px;
+        li{
+            box-sizing: border-box;
+            width: 31%;
+            position: relative;
+            .icon{
+                position: absolute;
+                top: -15px;
+                left: 25%;
+                color: white;
+                font-size: 144px;
+                opacity: 0.2;
+            }        
+        }
+        li:nth-child(1){
+            padding: 15px;
+            background: #ff9a2a
+        }
+        li:nth-child(2){
+            margin-left: 30px;
+            padding: 15px;
+            background: #7fbc39
+        }
+        li:nth-child(3){
+            margin-left: 30px;
+            padding: 15px;
+            background: #fff
+        }
+    }
+}
+@media screen and (min-width: 768px) {
+    .statistics{
+        li{
+            height: 115px;
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .statistics{
+        li{
+            height: 90px;
+        }
+    }
+}

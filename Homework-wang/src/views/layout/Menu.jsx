@@ -12,9 +12,7 @@ class Home extends Component{
      }
     render(){
         return(
-            <div>
-                <menu className="menu-container"></menu>
-            </div>
+            <menu className="menu-container"></menu>
         )
     }
 }

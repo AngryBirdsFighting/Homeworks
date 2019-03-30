@@ -13,9 +13,21 @@ class Home extends Component{
      }
     render(){
         return(
-            <div>
-                <div className="content-container">
-                sdhasjkdhasjd    sdhasjkdhasjd    sdhasjkdhasjd    sdhasjkdhasjd    sdhasjkdhasjd    sdhasjkdhasjd    sdhasjkdhasjd    sdhasjkdhasjd    sdhasjkdhasjd    sdhasjkdhasjd    sdhasjkdhasjd    sdhasjkdhasjd    sdhasjkdhasjd    sdhasjkdhasjd    sdhasjkdhasjd
+            <div className="content-container">
+                <div>
+                    <ul className="statistics">
+                        <li>
+                            <div>
+                                <i className="icon icon-cog"></i>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <i className="icon icon-coffee"></i>
+                            </div>
+                        </li>
+                        <li></li>
+                    </ul>
                 </div>
             </div>
         )
