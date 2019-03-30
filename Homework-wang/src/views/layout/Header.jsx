@@ -11,7 +11,7 @@ import avatar from "../../assets/logo/avatar.jpg"
 class Home extends Component{
     componentWillMount() {
         console.log(this.props)
-     }
+    }
     render(){
         return(
             <div>

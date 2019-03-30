@@ -47,6 +47,21 @@ class Home extends Component{
                             </ul>
                         </li>
                     </ul>
+                    <div className="search">
+                        <ul className="fl">
+                            <li className="active">All</li>
+                            <li>Physical</li>
+                            <li>Virtual</li>
+                        </ul>
+                        <div className="fl search-box">
+                            <input type="text"></input>
+                        </div>
+                        <div className="fr search-icon">
+                            <i className="icon-th-card"></i>
+                            <i className="icon-th-list"></i>
+                        </div>
+                        <span className="clear"></span>
+                    </div>
                 </div>
             </div>
         )
