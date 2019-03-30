@@ -14,11 +14,26 @@ class Home extends Component{
         return(
             <menu className="menu-container">
                 <ul className="menu-ul">
-                    <li>
+                    <li className="active">
                         <i className="icon-dashboard"></i>
                         <span>DASHBOARD</span>
                     </li>
+                    <li>
+                        <i className="icon-sitemap"></i>
+                        <span>AGENT</span>
+                    </li>
+                    <li>
+                        <i className="icon-boat"></i>
+                        <span>MY CRUISE</span>
+                    </li>
+                    <li>
+                        <i className="icon-life-bouy"></i>
+                        <span>HELP</span>
+                    </li>
                 </ul>
+                <div className="history">
+                    <p>History</p>
+                </div>
             </menu>
         )
     }
