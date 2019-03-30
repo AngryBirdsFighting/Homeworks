@@ -7,12 +7,20 @@
  */
 import React,{Component} from "react"
 class Home extends Component{
+    state={
+        height:"",
+    }
     componentWillMount() {
         console.log(this.props)
      }
+     componentDidMount(){
+         this.setState({
+             height:document.body.clientHeight + "px"
+         })
+    }
     render(){
         return(
-            <menu className="menu-container">
+            <menu style={{height:this.state.height}} className="menu-container">
                 <ul className="menu-ul">
                     <li className="active">
                         <i className="icon-dashboard"></i>
