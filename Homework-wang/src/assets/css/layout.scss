@@ -31,7 +31,23 @@
                 position: absolute;
                 width: 270px;
                 height: 940px;
-                background: #2d4054
+                background: #2d4054;
+                .menu-ul{
+                    display: inline-block;
+                    width: 100%;
+                    li{
+                        display: inline-block;
+                        height: 45px;
+                        line-height: 45px;
+                        i{
+                            color: #ccc
+                        }
+                        span{
+                            font-size: 14px;
+                            color: #ccc;
+                        }
+                    }
+                }
             }
             .content-container{
                 background: rgb(243, 243, 243);
