@@ -52,6 +52,11 @@ const setMenuZIndex = (data) =>(
      data
     }
 )
+const setAddDialogStatus = (data) =>(
+    {type: type.SET_ADD_DIALOG_STATUS,
+     data
+    }
+)
 export const  setAugetListAsync = (params) => {
     return dispatch => {
         requestData(params).then( res => {
@@ -63,5 +68,10 @@ export const  setAugetListAsync = (params) => {
 export const  setMenuZIndexSync = (data) => {
     return dispatch => {
         dispatch(setMenuZIndex(data))
+    }
+}
+export const  setAddDialogStatusSync = (data) => {
+    return dispatch => {
+        dispatch(setAddDialogStatus(data))
     }
 }

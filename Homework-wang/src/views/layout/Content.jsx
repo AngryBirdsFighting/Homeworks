@@ -7,15 +7,26 @@
  */
 import React,{Component} from "react"
 import window from "../../assets/os icons/windows.png"
+import { connect} from "react-redux";
+import { setAugetListAsync, setMenuZIndexSync, setAddDialogStatusSync} from "../../redux/action/index.js";
 
 class Home extends Component{
     componentWillMount() {
+        debugger
         console.log(this.props)
     }
+    componentWillMount() {
+        let params = {
+            url: "/agents",
+            data:{}
+        }
+        this.props.setAugetListAsync(params)
+    }
     render(){
+        let agents = this.props.menu
+        debugger
         return(
             <div className="content-container">
-           
                 <div>
                     <ul className="statistics">
                         <li>
@@ -64,232 +75,48 @@ class Home extends Component{
                         </div>
                         <span className="clear"></span>
                     </div>
-                    <div >
-                    <div className="content">
-                            <div className="fl content-left">
-                                <img src={window} className="window"></img>
-                            </div>
-                            <div className="fl content-right">
-                                <ul>
-                                    <li>
-                                        <i className="icon-desktop"></i>
-                                        <span className="sp1">bjstdmngbgr08.thoughthomeworks.com</span>
-                                        <span className="sp2">building</span>
-                                    </li>
-                                    <li>
-                                        <i className="icon-info"></i>
-                                        <span className="sp3">192.168.1.243</span>
-                                    </li>
-                                    <li>
-                                        <i className="icon-folder"></i>
-                                        <span>/var/lib/cruise-agent</span>
-                                    </li>
-                                </ul>
-                                <ul className="con-bottom">
-                                    <li>
-                                        <i className="icon-plus fl"></i>
-                                        <span className="fl">
-                                            Fixfox<i className="icon-trash"></i>
-                                        </span>
-                                        <span className="fl">
-                                            Safari<i className="icon-trash"></i>
-                                        </span>
-                                        <span className="fl">
-                                            Ubuntu<i className="icon-trash"></i>
-                                        </span>
-                                        <span className="fl">
-                                            Chrome<i className="icon-trash"></i>
-                                        </span>
-                                    </li>
-                                    <li className="fr">
-                                        <span>
-                                            <i className="icon-deny"></i>Deny
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <span className="clear"></span>
-                        </div>
-                        <div className="content">
-                            <div className="fl content-left">
-                                <img src={window} className="window"></img>
-                            </div>
-                            <div className="fl content-right">
-                                <ul>
-                                    <li>
-                                        <i className="icon-desktop"></i>
-                                        <span className="sp1">bjstdmngbgr08.thoughthomeworks.com</span>
-                                        <span className="sp2">building</span>
-                                    </li>
-                                    <li>
-                                        <i className="icon-info"></i>
-                                        <span className="sp3">192.168.1.243</span>
-                                    </li>
-                                    <li>
-                                        <i className="icon-folder"></i>
-                                        <span>/var/lib/cruise-agent</span>
-                                    </li>
-                                </ul>
-                                <ul className="con-bottom">
-                                    <li>
-                                        <i className="icon-plus"></i>
-                                        <span>
-                                            Fixfox<i className="icon-trash"></i>
-                                        </span>
-                                        <span>
-                                            Safari<i className="icon-trash"></i>
-                                        </span>
-                                        <span>
-                                            Ubuntu<i className="icon-trash"></i>
-                                        </span>
-                                        <span>
-                                            Chrome<i className="icon-trash"></i>
-                                        </span>
-                                    </li>
-                                    <li className="fr">
-                                        <span>
-                                            <i className="icon-deny"></i>Deny
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <span className="clear"></span>
-                        </div>
-                        <div className="content">
-                            <div className="fl content-left">
-                                <img src={window} className="window"></img>
-                            </div>
-                            <div className="fl content-right">
-                                <ul>
-                                    <li>
-                                        <i className="icon-desktop"></i>
-                                        <span className="sp1">bjstdmngbgr08.thoughthomeworks.com</span>
-                                        <span className="sp2">building</span>
-                                    </li>
-                                    <li>
-                                        <i className="icon-info"></i>
-                                        <span className="sp3">192.168.1.243</span>
-                                    </li>
-                                    <li>
-                                        <i className="icon-folder"></i>
-                                        <span>/var/lib/cruise-agent</span>
-                                    </li>
-                                </ul>
-                                <ul className="con-bottom">
-                                    <li>
-                                        <i className="icon-plus"></i>
-                                        <span>
-                                            Fixfox<i className="icon-trash"></i>
-                                        </span>
-                                        <span>
-                                            Safari<i className="icon-trash"></i>
-                                        </span>
-                                        <span>
-                                            Ubuntu<i className="icon-trash"></i>
-                                        </span>
-                                        <span>
-                                            Chrome<i className="icon-trash"></i>
-                                        </span>
-                                    </li>
-                                    <li className="fr">
-                                        <span>
-                                            <i className="icon-deny"></i>Deny
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <span className="clear"></span>
-                        </div>
-                        <div className="content">
-                            <div className="fl content-left">
-                                <img src={window} className="window"></img>
-                            </div>
-                            <div className="fl content-right">
-                                <ul>
-                                    <li>
-                                        <i className="icon-desktop"></i>
-                                        <span className="sp1">bjstdmngbgr08.thoughthomeworks.com</span>
-                                        <span className="sp2">building</span>
-                                    </li>
-                                    <li>
-                                        <i className="icon-info"></i>
-                                        <span className="sp3">192.168.1.243</span>
-                                    </li>
-                                    <li>
-                                        <i className="icon-folder"></i>
-                                        <span>/var/lib/cruise-agent</span>
-                                    </li>
-                                </ul>
-                                <ul className="con-bottom">
-                                    <li>
-                                        <i className="icon-plus"></i>
-                                        <span>
-                                            Fixfox<i className="icon-trash"></i>
-                                        </span>
-                                        <span>
-                                            Safari<i className="icon-trash"></i>
-                                        </span>
-                                        <span>
-                                            Ubuntu<i className="icon-trash"></i>
-                                        </span>
-                                        <span>
-                                            Chrome<i className="icon-trash"></i>
-                                        </span>
-                                    </li>
-                                    <li className="fr">
-                                        <span>
-                                            <i className="icon-deny"></i>Deny
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <span className="clear"></span>
-                        </div>
-                        <div className="content">
-                            <div className="fl content-left">
-                                <img src={window} className="window"></img>
-                            </div>
-                            <div className="fl content-right">
-                                <ul>
-                                    <li>
-                                        <i className="icon-desktop"></i>
-                                        <span className="sp1">bjstdmngbgr08.thoughthomeworks.com</span>
-                                        <span className="sp2">building</span>
-                                    </li>
-                                    <li>
-                                        <i className="icon-info"></i>
-                                        <span className="sp3">192.168.1.243</span>
-                                    </li>
-                                    <li>
-                                        <i className="icon-folder"></i>
-                                        <span>/var/lib/cruise-agent</span>
-                                    </li>
-                                </ul>
-                                <ul className="con-bottom">
-                                    <li>
-                                        <i className="icon-plus"></i>
-                                        <span>
-                                            Fixfox<i className="icon-trash"></i>
-                                        </span>
-                                        <span>
-                                            Safari<i className="icon-trash"></i>
-                                        </span>
-                                        <span>
-                                            Ubuntu<i className="icon-trash"></i>
-                                        </span>
-                                        <span>
-                                            Chrome<i className="icon-trash"></i>
-                                        </span>
-                                    </li>
-                                    <li className="fr">
-                                        <span>
-                                            <i className="icon-deny"></i>Deny
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <span className="clear"></span>
-                        </div>
+                    <div>
+                        { agents.map( (item,index) => {
+                           return(
+                           <div key={index} className="content">
+                             <div className="fl content-left">
+                                 <img src={window} className="window"></img>
+                             </div>
+                             <div className="fl content-right">
+                                 <ul>
+                                     <li>
+                                         <i className="icon-desktop"></i>
+                                         <span className="sp1">{item.name}</span>
+                                         <span className="sp2">{item.status}</span>
+                                     </li>
+                                     <li>
+                                         <i className="icon-info"></i>
+                                         <span className="sp3">{item.ip}</span>
+                                     </li>
+                                     <li>
+                                         <i className="icon-folder"></i>
+                                         <span>{item.location}</span>
+                                     </li>
+                                 </ul>
+                                 <ul className="con-bottom">
+                                     <li>
+                                         <i className="icon-plus"></i>
+                                         { item.resources.map( (i, index) => {
+                                             return (
+                                             <span>{i}<i className="icon-trash"></i></span>
+                                             )
+                                        })}
+                                     </li>
+                                     <li className="fr">
+                                         <span>
+                                             <i className="icon-deny"></i>Deny
+                                         </span>
+                                     </li>
+                                 </ul>
+                             </div>
+                             <span className="clear"></span>
+                         </div>
+                       ) })}
                     </div>
                 </div>
                 <div className="add-dialog">
@@ -311,5 +138,5 @@ class Home extends Component{
         )
     }
 }
-
+Home = connect(state =>({menu:state.agentList, menuZIndex: state.menuZIndex, dialogStatus: state.menuZIndex}), {setAugetListAsync, setMenuZIndexSync, setAddDialogStatusSync})(Home)
 export default Home

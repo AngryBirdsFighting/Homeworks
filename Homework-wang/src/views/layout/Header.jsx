@@ -37,14 +37,7 @@ class Home extends Component{
         })
     }
     componentWillMount() {
-        console.log(this.props)
-        let params = {
-            url: "/agents",
-            data:{}
-        }
-        this.props.setAugetListAsync(params)
     }
-
     render(){
         return(
             <div>
