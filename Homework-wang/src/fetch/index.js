@@ -1,4 +1,5 @@
 import Config from "../config/"
+import { isEmptyByObj } from "../utils/tools";
 class Fetch {
     constructor(){
         this.baseUrl = Config.baseUrl; 
@@ -32,20 +33,20 @@ class Fetch {
      */
     async fetchAjax(param){
         this.reqConfig.method = param.method || "Get";  
-        if(param.data){
-            if(this.reqConfig.method === "Get"){
-                param.url += "?";
-                let i = 0
-                for (const key in param.data) {
-                    if(i !== 0 ){
-                        param.url += "&";
-                    }
-                    param.url += `${key}=${param.data[key]}`
-                    i++        
-                }
-            } else {
+        if(param.data  && isEmptyByObj(param.data)){
+            // if(this.reqConfig.method === "Get"){
+            //     param.url += "?";
+            //     let i = 0
+            //     for (const key in param.data) {
+            //         if(i !== 0 ){
+            //             param.url += "&";
+            //         }
+            //         param.url += `${key}=${param.data[key]}`
+            //         i++        
+            //     }
+            // } else {
                 this.reqConfig.body = JSON.stringify(param.data)
-            }
+            // }
         }  
         var res = await this.request(this.baseUrl + param.url, this.reqConfig);
         if(res.status === 200)

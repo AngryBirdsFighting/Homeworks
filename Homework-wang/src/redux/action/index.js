@@ -9,48 +9,42 @@ import * as type from './type';
 import Fetch from "../../fetch/index"
 let fetch = new Fetch()
 
-let getAgentList = () => {
+let requestData = (params) => {
     return new Promise((resolve, reject) => {
         let param = {
-            url: "/agents",
-            data: {}
+            url: params.url,
+            data: params.data
         }
         fetch.fetchAjax(param).then( res => {
             resolve(res)
         })
     })
 }
-let addAgent = () => {
-    return new Promise((resolve, reject) => {
-        let param = {
-            url: "/getPermission",
-            data: {}
-        }
-        fetch.fetchAjax(param).then(res => {
-            resolve(res)
-        })
-    })
-}
-let deleteAgent = () => {
-    return new Promise((resolve, reject) => {
-        let param = {
-            url: "/getPermission",
-            data: {}
-        }
-        fetch.fetchAjax(param).then(res => {
-            resolve(res)
-        })
-    })
-}
-// 创建action creator
-// const setInfo = () =>{
-//     return {type: type.SET_INFO}
+// let addAgent = (params) => {
+//     return new Promise((resolve, reject) => {
+//         let param = {
+//             url: "/getPermission",
+//             data: {}
+//         }
+//         fetch.fetchAjax(param).then(res => {
+//             resolve(res)
+//         })
+//     })
+// }
+// let deleteAgent = () => {
+//     return new Promise((resolve, reject) => {
+//         let param = {
+//             url: "/getPermission",
+//             data: {}
+//         }
+//         fetch.fetchAjax(param).then(res => {
+//             resolve(res)
+//         })
+//     })
 // }
 const setAgentList = (data, defaultPath,auths) =>(
     {type: type.SET_AGENT_LIST,
-     data,
-     defaultPath,
-     auths
+     data
     }
 )
 const setMenuZIndex = (data) =>(
@@ -58,10 +52,11 @@ const setMenuZIndex = (data) =>(
      data
     }
 )
-export const  setAugetListAsync = () => {
+export const  setAugetListAsync = (params) => {
     return dispatch => {
-        getAgentList().then( res => {
-            dispatch(setAgentList(res.data))
+        requestData(params).then( res => {
+            console.log(res)
+            dispatch(setAgentList(res))
         }).catch()
     }
 }

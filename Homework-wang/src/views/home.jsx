@@ -6,11 +6,8 @@
  * @Description:  
  */
 import React,{Component} from "react"
-console.log("我是首页")
-
 class Home extends Component{
     componentWillMount() {
-        console.log(this.props)
      }
     render(){
         return(
