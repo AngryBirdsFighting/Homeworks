@@ -187,7 +187,9 @@
     }
 }
 .add-dialog{
+    display: none;
     position: absolute;
+    z-index: 110;
     width: 40%;
     top: 40%;
     left: 31%;
