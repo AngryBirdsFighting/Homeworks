@@ -7,6 +7,7 @@
  */
 import React,{Component} from "react"
 import avatar from "../../assets/logo/avatar.jpg"
+import logo from '../../assets/logo/logo.svg';
 import { connect} from "react-redux";
 import { setAugetListAsync, setMenuZIndexSync} from "../../redux/action/index.js";
 
@@ -46,6 +47,9 @@ class Home extends Component{
                <header className="header-container">
                     <div className="header">
                         <i className="fl icon icon-navicon" onClick = {() => this.props.setMenuZIndexSync(!this.props.menuZIndex)}></i>
+                        <embed src={logo} width="100" height="35" 
+                        type="image/svg+xml"
+                        pluginspage="http://www.adobe.com/svg/viewer/install/" />
                         <i className={"fr icon "+ this.state.icon } onClick = {() => this.avatarDialogHandler()}></i>
                         <img  className="fr avatar"  src={avatar} alt="头像" height="40px" />
                         <div className="clear"></div>
