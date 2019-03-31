@@ -15,6 +15,7 @@ class Home extends Component{
     render(){
         return(
             <div className="content-container">
+           
                 <div>
                     <ul className="statistics">
                         <li>

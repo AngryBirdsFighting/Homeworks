@@ -17,6 +17,7 @@ class Main extends Component{
     render(){
         return(
             <div className="main">
+             <div className="layer"></div>
                 <div className="main-wrapper">
                     <Header/>
                     <div className="container">
