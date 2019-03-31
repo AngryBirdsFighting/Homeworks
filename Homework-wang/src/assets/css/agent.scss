@@ -186,6 +186,45 @@
         }
     }
 }
+.add-dialog{
+    position: absolute;
+    width: 40%;
+    top: 40%;
+    left: 31%;
+    border: 1px solid #00b4cf;
+    box-shadow: 0 3px 5px rgba($color: #000000, $alpha: 0.3);
+    color: #000;
+    background-color: #FFF;
+    padding: 10px 10px;
+    i{
+        display: inline-block;
+    }
+    ul{
+        li{
+            padding-bottom: 20px;
+            input{
+                border-radius: 5px;
+                height: 30px;
+                width: 98%;
+            }
+            span{
+                color: #FFF;
+                display: inline-block;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                width: 30%;
+                &.add-btn{
+                    background: #00b4cf
+                }
+                &.cancel-btn{
+                    margin-left: 10px;
+                    background: #2d4054
+                }
+            }
+        }
+    }
+}
 @media screen and (min-width: 1200px) {
     .content-container{
         margin-left: 270px;

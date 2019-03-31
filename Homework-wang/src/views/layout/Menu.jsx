@@ -22,12 +22,16 @@ class Home extends Component{
          document.documentElement.clientWidth < 1024 ? this.props.setMenuZIndexSync(!this.props.menuZIndex) : null
     }
     render(){
-        let zIndex = this.props.menuZIndex ? 100 : -1
+        console.log(this.props.menuZIndex )
+        let zIndex = this.props.menuZIndex ?  document.documentElement.clientWidth < 1024 ? 100 : 1 : -1
         return(
             <menu style={{height:this.state.height, zIndex: zIndex}} className="menu-container">
+            <span className="btn-close">
+                 <i className="icon-close" onClick = {() => this.props.setMenuZIndexSync(!this.props.menuZIndex)}></i>
+            </span>
                 <ul className="menu-ul">
                     <li className="active">
-                        <i className="icon-dashboard" onClick = {() => this.props.setMenuZIndexSync(!this.props.menuZIndex)}></i>
+                        <i className="icon-dashboard" ></i>
                         <span>DASHBOARD</span>
                     </li>
                     <li>
@@ -62,6 +66,7 @@ class Home extends Component{
                         <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
                     </ul>
                 </div>
+               
             </menu>
         )
     }
