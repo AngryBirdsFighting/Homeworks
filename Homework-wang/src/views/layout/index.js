@@ -23,6 +23,9 @@ class Main extends Component{
                         <Menu/>
                         <Content/>
                     </div>
+                    <footer className="footer">
+                    @Copyright 2017 ThougtWorks
+                    </footer>
                 </div>
             </div>
         )
