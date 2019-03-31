@@ -3,7 +3,7 @@
     width: 100%;
     .main-wrapper{
         .header-container{
-            position: relative;
+            position: fixed;
             z-index: 50;
             background:#fff;
             width: 100%;
@@ -15,6 +15,7 @@
                 height: 70px;
                 padding: 15px 20px 0 40px;
                 position: relative;
+                text-align: center;
                 .icon-navicon{
                     width: 40px;
                     height: 40px;
@@ -58,7 +59,7 @@
             display: flex;
             flex-direction: row;
             .menu-container{
-                position: absolute;
+                position: fixed;
                 // @media screen and (max-width: 1024px) {
                 //     z-index: -1;
                 // }
@@ -128,6 +129,7 @@
             .content-container{
                 background: rgb(243, 243, 243);
                 flex: 1;
+                margin-top: 70px;
             }
         }
     }

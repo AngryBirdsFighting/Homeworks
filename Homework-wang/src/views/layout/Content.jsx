@@ -9,20 +9,12 @@ import React,{Component} from "react"
 import window from "../../assets/os icons/windows.png"
 
 class Home extends Component{
-    state={
-        height:"",
-    }
     componentWillMount() {
         console.log(this.props)
     }
-    componentDidMount(){
-        this.setState({
-            height:(document.documentElement.clientHeight - 70)+ "px"
-        })
-    }
     render(){
         return(
-            <div style={{height:this.state.height}} className="content-container">
+            <div className="content-container">
                 <div>
                     <ul className="statistics">
                         <li>
@@ -73,7 +65,52 @@ class Home extends Component{
                     </div>
                     <div >
                     <div className="content">
-                            <div className="fl">
+                            <div className="fl content-left">
+                                <img src={window} className="window"></img>
+                            </div>
+                            <div className="fl content-right">
+                                <ul>
+                                    <li>
+                                        <i className="icon-desktop"></i>
+                                        <span className="sp1">bjstdmngbgr08.thoughthomeworks.com</span>
+                                        <span className="sp2">building</span>
+                                    </li>
+                                    <li>
+                                        <i className="icon-info"></i>
+                                        <span className="sp3">192.168.1.243</span>
+                                    </li>
+                                    <li>
+                                        <i className="icon-folder"></i>
+                                        <span>/var/lib/cruise-agent</span>
+                                    </li>
+                                </ul>
+                                <ul className="con-bottom">
+                                    <li>
+                                        <i className="icon-plus fl"></i>
+                                        <span className="fl">
+                                            Fixfox<i className="icon-trash"></i>
+                                        </span>
+                                        <span className="fl">
+                                            Safari<i className="icon-trash"></i>
+                                        </span>
+                                        <span className="fl">
+                                            Ubuntu<i className="icon-trash"></i>
+                                        </span>
+                                        <span className="fl">
+                                            Chrome<i className="icon-trash"></i>
+                                        </span>
+                                    </li>
+                                    <li className="fr">
+                                        <span>
+                                            <i className="icon-deny"></i>Deny
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span className="clear"></span>
+                        </div>
+                        <div className="content">
+                            <div className="fl content-left">
                                 <img src={window} className="window"></img>
                             </div>
                             <div className="fl content-right">
@@ -118,7 +155,7 @@ class Home extends Component{
                             <span className="clear"></span>
                         </div>
                         <div className="content">
-                            <div className="fl">
+                            <div className="fl content-left">
                                 <img src={window} className="window"></img>
                             </div>
                             <div className="fl content-right">
@@ -163,7 +200,7 @@ class Home extends Component{
                             <span className="clear"></span>
                         </div>
                         <div className="content">
-                            <div className="fl">
+                            <div className="fl content-left">
                                 <img src={window} className="window"></img>
                             </div>
                             <div className="fl content-right">
@@ -208,52 +245,7 @@ class Home extends Component{
                             <span className="clear"></span>
                         </div>
                         <div className="content">
-                            <div className="fl">
-                                <img src={window} className="window"></img>
-                            </div>
-                            <div className="fl content-right">
-                                <ul>
-                                    <li>
-                                        <i className="icon-desktop"></i>
-                                        <span className="sp1">bjstdmngbgr08.thoughthomeworks.com</span>
-                                        <span className="sp2">building</span>
-                                    </li>
-                                    <li>
-                                        <i className="icon-info"></i>
-                                        <span className="sp3">192.168.1.243</span>
-                                    </li>
-                                    <li>
-                                        <i className="icon-folder"></i>
-                                        <span>/var/lib/cruise-agent</span>
-                                    </li>
-                                </ul>
-                                <ul className="con-bottom">
-                                    <li>
-                                        <i className="icon-plus"></i>
-                                        <span>
-                                            Fixfox<i className="icon-trash"></i>
-                                        </span>
-                                        <span>
-                                            Safari<i className="icon-trash"></i>
-                                        </span>
-                                        <span>
-                                            Ubuntu<i className="icon-trash"></i>
-                                        </span>
-                                        <span>
-                                            Chrome<i className="icon-trash"></i>
-                                        </span>
-                                    </li>
-                                    <li className="fr">
-                                        <span>
-                                            <i className="icon-deny"></i>Deny
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <span className="clear"></span>
-                        </div>
-                        <div className="content">
-                            <div className="fl">
+                            <div className="fl content-left">
                                 <img src={window} className="window"></img>
                             </div>
                             <div className="fl content-right">

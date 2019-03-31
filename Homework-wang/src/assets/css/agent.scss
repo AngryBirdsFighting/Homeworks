@@ -7,17 +7,9 @@
         margin-top: 15px;
         & > li{
             box-sizing: border-box;
-            width: 31%;
+            width: 32%;
             position: relative;
             color: white;
-            .icon{
-                position: absolute;
-                top: -15px;
-                left: 25%;
-                color: white;
-                font-size: 144px;
-                opacity: 0.2;
-            }
             span{
                 width: 100%;
                 display: block;
@@ -34,13 +26,10 @@
             }  
         }
         & > li:nth-child(1){
-            // min-width: 150px;
             padding: 15px;
             background: #ff9a2a
         }
         & > li:nth-child(2){
-            // min-width: 150px;
-            // margin-left: 30px;
             padding: 15px;
             background: #7fbc39
         }
@@ -115,8 +104,7 @@
     .content{
         margin-bottom: 15px;
         background: #fff;
-        padding: 20px;
-        height: 80px;
+        
         color: #000;
         .window{
             height: 80px;
@@ -128,13 +116,20 @@
             vertical-align: middle;
             color: #ccc;
         }
+        @media screen and (max-width: 1200px) {
+            .content-left{
+                display: none;
+            }
+        }
         .content-right{
             display: inline-block;
-            width: 86%;
+            
             li{
                 display: inline-block;
-                height: 40px;
-                line-height: 40px;
+                span{
+                    height: 22px;
+                    line-height: 22px;
+                }
                 .sp1{
                     color: #00B4CF;
                     font-weight: bolder;
@@ -159,6 +154,7 @@
             }
             .con-bottom{
                 span{
+                    display: inline-table;
                     background: #EFEFEF;
                     padding: 3px 3px;
                     font-size: 14px;
@@ -171,6 +167,7 @@
                     }
                 }
                 li.fr{
+                    text-align: right;
                     span{
                         background: #00B4CF;
                         color: #fff;
@@ -233,10 +230,9 @@
         padding-left: 30px;
         .statistics{
             & > li:nth-child(2){
-                margin-left: 30px;
-                }
+                margin: 0 2%;
+            }
             & > li:nth-child(3){
-                margin-left: 30px;
                 ul{
                     flex-direction: row;
                 }
@@ -250,10 +246,9 @@
         padding-left: 10px;
         .statistics{
             & > li:nth-child(2){
-                  margin-left: 20px;
+                  margin: 0 2%;
             }
             & > li:nth-child(3){
-                margin-left: 20px;
                 ul{
                     flex-direction: column;
                     li{
@@ -274,10 +269,9 @@
         padding: 0 20px;
         .statistics{
             & > li:nth-child(2){
-                  margin-left: 20px;
+                  margin: 0 2%;
             }
             & > li:nth-child(3){
-                margin-left: 20px;
                 ul{
                     flex-direction: column;
                     height: 30px;
@@ -341,6 +335,27 @@
         .statistics{
             & > li{
                 height: 115px;
+                .icon{
+                    position: absolute;
+                    top: -15px;
+                    left: 25%;
+                    color: white;
+                    font-size: 144px;
+                    opacity: 0.2;
+                }
+            }
+            & > li:nth-child(2){
+                  margin: 0 2%;
+            }
+        }
+    }
+    .content{
+        padding: 20px;
+        .content-right{
+            width: 86%;
+            li{
+                height: 40px;
+                line-height: 40px;
             }
         }
     }
@@ -351,14 +366,22 @@
         .statistics{
             & > li{
                 height: 90px;
-                width: 46%;
+                width: 49%;
+                .icon{
+                    position: absolute;
+                    bottom: 0;
+                    right: 30%;
+                    color: white;
+                    font-size: 60px;
+                    opacity: 0.2;
+                }
             }
             & > li:nth-child(2){
-                margin-left: 10px;
+                    margin-left: 2%;
                 }
             & > li:nth-child(3){
                 margin-left: 0;
-                width: 96%;
+                width: 100%;
                 margin-top: 15px;
                 ul{
                     margin: 0 auto;
@@ -369,4 +392,21 @@
             }
         }
     }
+    .content{
+        padding: 10px;
+        .content-right{
+            width: 100%;
+            li{
+                width: 100%;
+                line-height: 35px;
+                span{
+                    margin-bottom: 5px;
+                }
+            }
+            .sp2{
+                display: none;
+            }
+        }
+    }
+    
 }
