@@ -12,6 +12,7 @@ let fetch = new Fetch()
 let requestData = (params) => {
     return new Promise((resolve, reject) => {
         let param = {
+            method: params.method,
             url: params.url,
             data: params.data
         }
@@ -20,29 +21,7 @@ let requestData = (params) => {
         })
     })
 }
-// let addAgent = (params) => {
-//     return new Promise((resolve, reject) => {
-//         let param = {
-//             url: "/getPermission",
-//             data: {}
-//         }
-//         fetch.fetchAjax(param).then(res => {
-//             resolve(res)
-//         })
-//     })
-// }
-// let deleteAgent = () => {
-//     return new Promise((resolve, reject) => {
-//         let param = {
-//             url: "/getPermission",
-//             data: {}
-//         }
-//         fetch.fetchAjax(param).then(res => {
-//             resolve(res)
-//         })
-//     })
-// }
-const setAgentList = (data, defaultPath,auths) =>(
+const setAgentList = (data) =>(
     {type: type.SET_AGENT_LIST,
      data
     }
@@ -57,11 +36,33 @@ const setAddDialogStatus = (data) =>(
      data
     }
 )
-export const  setAugetListAsync = (params) => {
+const setHistoryList = (data) =>(
+    {type: type.SET_HISTORY,
+     data
+    }
+)
+export const  setAgentListAsync = (params) => {
     return dispatch => {
         requestData(params).then( res => {
-            console.log(res)
             dispatch(setAgentList(res))
+        }).catch()
+    }
+}
+export const  setHistoryListAsync = (params) => {
+    return (dispatch, getState) => {
+        requestData(params).then( res => {
+            // debugger
+            // let agentsParams = {
+            //     method:"get",
+            //     url: "/agents",
+            //     data:{}
+            // }
+            // dispatch(setAgentListAsync(agentsParams))
+            let states = getState()
+            let index =  states.historyList.indexOf(params.data.name)
+            if(index == -1){
+                dispatch(setHistoryList(params.data.name))
+            }
         }).catch()
     }
 }

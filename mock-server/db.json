@@ -1,49 +1,6 @@
 {
   "agents": [
     {
-      "name": "bjstdmngbdr08.thoughtworks.com",
-      "os": "windows",
-      "status": "building",
-      "type": "virtual",
-      "ip": "192.168.1.80",
-      "location": "/var/lib/cruise-agent",
-      "resources": [
-        "Firefox",
-        "Safari",
-        "Ubuntu",
-        "Chrome"
-      ],
-      "id": 1
-    },
-    {
-      "name": "bjstdmngbdr08.thoughtworks.com",
-      "os": "windows",
-      "status": "building",
-      "type": "virtual",
-      "ip": "192.168.1.80",
-      "location": "/var/lib/cruise-agent",
-      "resources": [
-        "Firefox",
-        "Safari",
-        "Ubuntu",
-        "Chrome"
-      ],
-      "id": 2
-    },
-    {
-      "name": "bjstdmngbdr10.thoughtworks.com",
-      "os": "ubuntu",
-      "status": "building",
-      "type": "physical",
-      "ip": "192.168.1.117",
-      "location": "/var/lib/cruise-agent",
-      "resources": [
-        "Firefox",
-        "Safari"
-      ],
-      "id": 3
-    },
-    {
       "name": "bjstdmngbdr11.thoughtworks.com",
       "os": "debian",
       "status": "building",
@@ -51,10 +8,10 @@
       "ip": "192.168.1.102",
       "location": "/var/lib/cruise-agent",
       "resources": [
-        "Firefox",
-        "Safari",
-        "Ubuntu",
-        "Chrome"
+        "asdsa",
+        "dsfds",
+        "dsadas",
+        "asdsad"
       ],
       "id": 4
     },
@@ -65,7 +22,11 @@
       "type": "physical",
       "ip": "192.168.1.110",
       "location": "/var/lib/cruise-agent",
-      "resources": [],
+      "resources": [
+        "asdsad",
+        "sadas",
+        "asdsa"
+      ],
       "id": 5
     },
     {
@@ -112,7 +73,7 @@
       "id": 8
     },
     {
-      "name": "bjstdmngbdr08.thoughtworks.com",
+      "name": "bjstdmngbdr55.thoughtworks.com",
       "os": "windows",
       "status": "building",
       "type": "virtual",
@@ -125,21 +86,6 @@
         "Chrome"
       ],
       "id": 10
-    },
-    {
-      "name": "bjstdmngbdr08.thoughtworks.com",
-      "os": "windows",
-      "status": "building",
-      "type": "virtual",
-      "ip": "192.168.1.80",
-      "location": "/var/lib/cruise-agent",
-      "resources": [
-        "Firefox",
-        "Safari",
-        "Ubuntu",
-        "Chrome"
-      ],
-      "id": 11
     },
     {
       "name": "bjstdmngbdr08.thoughtworks.com",

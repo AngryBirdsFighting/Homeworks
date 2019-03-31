@@ -4,3 +4,4 @@ export const ADD_AGENT= "ADD_AGENT";
 export const DELETE_AGENT = "ADD_AGENT";
 export const SET_MENU_Z_INDEX = "SET_MENU_Z_INDEX"
 export const SET_ADD_DIALOG_STATUS = "SET_ADD_DIALOG_STATUS"
+export const SET_HISTORY = "SET_HISTORY"

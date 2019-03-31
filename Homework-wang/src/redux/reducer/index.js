@@ -3,9 +3,18 @@ import { combineReducers } from 'redux';
 const agentList = (state = [], action) => {
     switch(action.type){
         case type.SET_AGENT_LIST:
-        return [...state , ...action.data]
+        state = action.data
+        return state
         default: 
-        return [...state]
+        return state
+    }
+}
+const historyList = (state = [], action) => {
+    switch(action.type){
+        case type.SET_HISTORY:
+        return [...state, action.data]
+        default: 
+        return state
     }
 }
 const menuZIndex = (state = true, action) => {
@@ -19,7 +28,7 @@ const menuZIndex = (state = true, action) => {
 }
 const dialogStatus = (state = true, action) => {
     switch(action.type){
-        case type.SET_MENU_Z_INDEX:
+        case type.SET_ADD_DIALOG_STATUS:
         state = action.data
         return state
         default: 
@@ -29,5 +38,6 @@ const dialogStatus = (state = true, action) => {
 export default combineReducers({
     agentList,
     menuZIndex,
-    dialogStatus
+    dialogStatus,
+    historyList
 });

@@ -9,7 +9,7 @@ import React,{Component} from "react"
 import avatar from "../../assets/logo/avatar.jpg"
 import logo from '../../assets/logo/logo.svg';
 import { connect} from "react-redux";
-import { setAugetListAsync, setMenuZIndexSync} from "../../redux/action/index.js";
+import { setAgentListAsync, setMenuZIndexSync} from "../../redux/action/index.js";
 
 class Home extends Component{
     state={
@@ -69,5 +69,5 @@ class Home extends Component{
     }
 }
 
-Home = connect(state =>({menu:state.agentList, menuZIndex: state.menuZIndex}), {setAugetListAsync, setMenuZIndexSync})(Home)
+Home = connect(state =>({menu:state.agentList, menuZIndex: state.menuZIndex}), {setAgentListAsync, setMenuZIndexSync})(Home)
 export default Home

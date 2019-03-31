@@ -129,6 +129,7 @@
                 span{
                     height: 22px;
                     line-height: 22px;
+                    word-break: break-all;
                 }
                 .sp1{
                     color: #00B4CF;
@@ -184,7 +185,6 @@
     }
 }
 .add-dialog{
-    display: none;
     position: absolute;
     z-index: 200000;
     width: 40%;

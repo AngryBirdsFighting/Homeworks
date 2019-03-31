@@ -7,7 +7,7 @@
  */
 import React,{Component} from "react"
 import { connect} from "react-redux";
-import { setAugetListAsync, setMenuZIndexSync} from "../../redux/action/index.js";
+import { setMenuZIndexSync} from "../../redux/action/index.js";
 class Home extends Component{
     state={
         height:"",
@@ -50,6 +50,11 @@ class Home extends Component{
                 <div className="history">
                     <p>History</p>
                     <ul>
+                        {this.props.historyList.length > 0 ? this.props.historyList.map(i => {
+                            return ( <li key={i}>{i}</li>)
+                        }) : "空"}
+                       
+                        {/* <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
                         <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
                         <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
                         <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
@@ -61,9 +66,7 @@ class Home extends Component{
                         <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
                         <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
                         <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
-                        <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
-                        <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
-                        <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
+                        <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li> */}
                     </ul>
                 </div>
                
@@ -71,5 +74,5 @@ class Home extends Component{
         )
     }
 }
-Home = connect(state =>({menu:state.agentList, menuZIndex: state.menuZIndex}), {setAugetListAsync, setMenuZIndexSync})(Home)
+Home = connect(state =>({menu:state.agentList, menuZIndex: state.menuZIndex, historyList: state.historyList}), {setMenuZIndexSync})(Home)
 export default Home

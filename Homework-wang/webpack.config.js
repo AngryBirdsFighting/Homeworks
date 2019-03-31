@@ -2,7 +2,7 @@ let path = require("path"), webpack = require("webpack")
 let HtmlWebpackPlugin = require("html-webpack-plugin")
 module.exports = {
     mode:"development", 
-    entry:'./src/index.js',
+    entry:["@babel/polyfill","./src/index.js"],
     output:{
         filename:'bundle.js',
         path:path.resolve(__dirname, 'dist')
