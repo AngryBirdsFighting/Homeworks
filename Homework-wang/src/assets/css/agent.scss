@@ -184,7 +184,7 @@
     }
 }
 .add-dialog{
-    // display: none;
+    display: none;
     position: absolute;
     z-index: 200000;
     width: 40%;
@@ -204,7 +204,9 @@
             input{
                 border-radius: 5px;
                 height: 30px;
-                width: 98%;
+                width: 93%;
+                padding: 0 10px;
+                color: #00B4CF;
             }
             span{
                 color: #FFF;
@@ -409,5 +411,14 @@
             }
         }
     }
-    
+    .add-dialog{
+        width: 90%;
+        left: 2%;
+        .add-btn{
+            width: 100%;
+        }
+        .cancel-btn{
+            display: none
+        }
+    }
 }

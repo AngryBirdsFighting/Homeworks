@@ -293,19 +293,20 @@ class Home extends Component{
                     </div>
                 </div>
                 <div className="add-dialog">
-                <ul>
-                    <i className="fr icon-close"></i>
-                    <div className="clear"></div>
-                    <li>
-                        <p>Separate multiple resourec name with commas</p>
-                    </li>
-                    <li>
-                        <input placeholder="  input Value" type="text" name="" id=""/>
-                    </li>
-                    <li>
-                        <span className="add-btn">Add Resources</span><span className="cancel-btn">Cancel</span>
-                    </li>
-                </ul>
+                    <ul>
+                        <i className="fr icon-close"></i>
+                        <div className="clear"></div>
+                        <li>
+                            <p>Separate multiple resourec name with commas</p>
+                        </li>
+                        <li>
+                            <input placeholder="  input Value" type="text" name="" id=""/>
+                        </li>
+                        <li>
+                            <span className="add-btn">Add Resources</span>
+                            <span className="cancel-btn">Cancel</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         )
