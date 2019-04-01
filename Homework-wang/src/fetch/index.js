@@ -31,23 +31,29 @@ class Fetch {
     /**发送请求
      * @param {Object} param url接口，data请求参数， method 请求类型，不写为Get
      */
-    async fetchAjax(param){
-        this.reqConfig.method = param.method || "Get";  
+    async fetchAjax(param){ 
+        this.reqConfig.method = param.method || "get";  
         if(param.data  && isEmptyByObj(param.data)){
-            // if(this.reqConfig.method === "Get"){
-            //     param.url += "?";
-            //     let i = 0
-            //     for (const key in param.data) {
-            //         if(i !== 0 ){
-            //             param.url += "&";
-            //         }
-            //         param.url += `${key}=${param.data[key]}`
-            //         i++        
-            //     }
-            // } else {
+            if(this.reqConfig.method === "get"){
+                param.url += `?_t=${ Date.parse(new Date())/1000 }`;
+                let i = 0
+                for (const key in param.data) {
+                  if(param.data[key]){
+                    if(i !== 0 ){
+                      param.url += "&";
+                  }
+                  if(param.data[key]){
+                    param.url += `${key}=${param.data[key]}`
+                  }
+                  }
+                    
+                    i++        
+                }
+            } else {
                 this.reqConfig.body = JSON.stringify(param.data)
-            // }
+            }
         }  
+       
         var res = await this.request(this.baseUrl + param.url, this.reqConfig);
         if(res.status === 200)
             return await res.json()

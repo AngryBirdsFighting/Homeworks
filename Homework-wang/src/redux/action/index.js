@@ -38,6 +38,7 @@ const setHistoryList = (data) =>(
 export const  setAgentListAsync = (params) => {
     return dispatch => {
         requestData(params).then( res => {
+            console.log(res)
             dispatch(setAgentList(res))
         }).catch()
     }
@@ -45,13 +46,7 @@ export const  setAgentListAsync = (params) => {
 export const  setHistoryListAsync = (params) => {
     return (dispatch, getState) => {
         requestData(params).then( res => {
-            // debugger
-            // let agentsParams = {
-            //     method:"get",
-            //     url: "/agents",
-            //     data:{}
-            // }
-            // dispatch(setAgentListAsync(agentsParams))
+          
             let states = getState()
             let index =  states.historyList.indexOf(params.data.name)
             if(index == -1){

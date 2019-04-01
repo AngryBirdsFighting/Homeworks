@@ -8,10 +8,7 @@
       "ip": "192.168.1.102",
       "location": "/var/lib/cruise-agent",
       "resources": [
-        "asdsa",
-        "dsfds",
-        "dsadas",
-        "asdsad"
+        "asdsa"
       ],
       "id": 4
     },
@@ -23,9 +20,7 @@
       "ip": "192.168.1.110",
       "location": "/var/lib/cruise-agent",
       "resources": [
-        "asdsad",
-        "sadas",
-        "asdsa"
+        "asdsad"
       ],
       "id": 5
     },
@@ -39,8 +34,7 @@
       "resources": [
         "Firefox",
         "Safari",
-        "Ubuntu",
-        "Chrome"
+        "Ubuntu"
       ],
       "id": 6
     },
