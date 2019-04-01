@@ -1,10 +1,4 @@
-/*
- * @Author: Wang Chao 
- * @Date: 2019-01-22 16:49:47 
- * @Last Modified by: Wang Chao
- * @Last Modified time: 2019-01-29 11:13:40
- * @Description:  redux action 管理
- */
+
 import * as type from './type';
 import Fetch from "../../fetch/index"
 let fetch = new Fetch()

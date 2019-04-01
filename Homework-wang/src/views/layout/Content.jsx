@@ -2,7 +2,7 @@
  * @Author: Wang Chao 
  * @Date: 2019-01-21 20:47:14 
  * @Last Modified by: Wang Chao
- * @Last Modified time: 2019-03-29 15:16:48
+ * @Last Modified time: 2019-04-01 17:32:39
  * @Description:  
  */
 import React,{Component} from "react"
@@ -16,14 +16,12 @@ class Home extends Component{
         id:""
     }
     componentWillMount() {
-    }
-    componentWillMount() {
        this.getList()
     }
     getList(){
         let params = {
             method:"get",
-            url: "/agents",
+            url: "/agents?q=r15",
             data:{}
         }
         this.props.setAgentListAsync(params)
@@ -40,10 +38,6 @@ class Home extends Component{
             data:data,
         }
         this.props.setHistoryListAsync(params)
-        // setTimeout( () => {
-        //     this.getList()
-        // },2000)
-      
     }
     addHanlder(){
         if(!this.state.inpValu){
@@ -99,14 +93,14 @@ class Home extends Component{
                         <li>
                             <div>
                                 <i className="icon icon-cog"></i>
-                                <span className="statistics-type">dddd</span>
+                                <span className="statistics-type">Building</span>
                                 <span className="statistics-count">3</span>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <i className="icon icon-coffee"></i>
-                                <span className="statistics-type">dddd</span>
+                                <span className="statistics-type">Idle</span>
                                 <span className="statistics-count">5</span>
                             </div>
                         </li>
@@ -114,15 +108,15 @@ class Home extends Component{
                             <ul>
                                 <li>
                                     <span>ALL</span>
-                                    <span>8</span>
+                                    <span></span>
                                 </li>
                                 <li>
-                                    <span>ALL</span>
-                                    <span>8</span>
+                                    <span>PHYSICAL</span>
+                                    <span></span>
                                 </li>
                                 <li>
-                                    <span>ALL</span>
-                                    <span>8</span>
+                                    <span>VIRTUAL</span>
+                                    <span></span>
                                 </li>
                             </ul>
                         </li>
