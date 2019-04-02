@@ -8,7 +8,9 @@
       "ip": "192.168.1.102",
       "location": "/var/lib/cruise-agent",
       "resources": [
-        "asdsa"
+        "asdsa",
+        "ddd",
+        "rrr"
       ],
       "id": 4
     },
@@ -20,7 +22,9 @@
       "ip": "192.168.1.110",
       "location": "/var/lib/cruise-agent",
       "resources": [
-        "asdsad"
+        "asdsad",
+        "dsadasd",
+        "5555"
       ],
       "id": 5
     },
@@ -32,9 +36,7 @@
       "ip": "192.168.1.103",
       "location": "/var/lib/cruise-agent",
       "resources": [
-        "Firefox",
-        "Safari",
-        "Ubuntu"
+        "Firefox"
       ],
       "id": 6
     },
@@ -48,8 +50,7 @@
       "resources": [
         "Firefox",
         "Safari",
-        "Ubuntu",
-        "Chrome"
+        "Ubuntu"
       ],
       "id": 7
     },

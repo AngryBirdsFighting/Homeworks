@@ -1,24 +1,22 @@
 /*
  * @Author: Wang Chao 
- * @Date: 2019-01-21 20:47:14 
- * @Last Modified by: Wang Chao
- * @Last Modified time: 2019-04-01 17:32:39
  * @Description:  
  */
 import React, { Component } from "react"
 import window from "../../assets/os icons/windows.png"
 import { connect } from "react-redux";
-import { setAgentListAsync, setHistoryListAsync, setMenuZIndexSync, setAddDialogStatusSync } from "../../redux/action/index.js";
+import { setAgentListAsync, setHistoryListAsync, setAddDialogStatusSync } from "../../redux/action/index.js";
+import Statistical from "../../components/Statistical.jsx"
 
-class Home extends Component {
+class Content extends Component {
     state = {
-        inpValu: "",
-        id: "",
-        listQurey: {
+        inpValu: "", // 新增资源名称
+        id: "", // 新增删除资源ID
+        listQurey: { // 列表查询条件
             name_like: "",
             type: ""
         },
-        typeActive: "active"
+        typeActive: "active" // 选中类名
     }
     componentWillMount() {
         this.getList()
@@ -32,7 +30,7 @@ class Home extends Component {
         }
         this.props.setAgentListAsync(params)
     }
-    // 添加列表数据请求条件
+    // 列表数据type搜索
     getListByType(type) {
         let listQurey = Object.assign({}, this.state.listQurey, { type: type })
         this.setState({
@@ -41,7 +39,7 @@ class Home extends Component {
             this.getList()
         })
     }
-    // 添加列表数据请求条件
+    // 列表数据name模糊搜索
     getListByName(e) {
         let listQurey = Object.assign({}, this.state.listQurey, { name_like: e.target.value })
         this.setState({
@@ -56,7 +54,7 @@ class Home extends Component {
         this.setState({
             id: id
         }, () => {
-            let data = this.props.menu.find(item => {
+            let data = this.props.agentsData.agentsList.find(item => {
                 return item.id == id
             })
             let index = data.resources.findIndex(item => item == str)
@@ -71,14 +69,14 @@ class Home extends Component {
                 id: ""
             })
         })
-
     }
+    // 新增资源
     addHanlder() {
         if (!this.state.inpValu) {
             alert("请输入内容")
             return
         }
-        let data = this.props.menu.find(item => {
+        let data = this.props.agentsData.agentsList.find(item => {
             return item.id == this.state.id
         })
         this.state.inpValu.split(",").map(item => {
@@ -98,78 +96,37 @@ class Home extends Component {
         this.props.setAddDialogStatusSync(!this.props.dialogStatus)
         document.documentElement.style.overflow = '';
     }
+    // 绑定新增value
     handelChangeAddInput(e) {
         this.setState({
             inpValu: e.target.value
         })
     }
-    handelAddDialog(id) {
-        document.documentElement.style.overflow = 'hidden';
+    // 打开新增窗口
+    openAddDialog(id) {
+        document.onmousewheel=function() {return false}
         this.setState({
             id: id
         })
         this.props.setAddDialogStatusSync(!this.props.dialogStatus)
     }
-    closeDialog() {
+    // 关闭新增窗口
+    closeAddDialog() {
+        document.onmousewheel=function() {return true}
         this.props.setAddDialogStatusSync(!this.props.dialogStatus)
-        document.documentElement.style.overflow = '';
+        
     }
     render() {
-        let agents = this.props.menu;
+        let { viewHeight } = this.props;
+        // 内容最小高度需要减去footer + header的高度
+        viewHeight -= (25 + 70);
+        viewHeight += "px"
+        let {agentsList, statisticalData} = this.props.agentsData;
         let { type } = this.state.listQurey;
-
-        let statisticsNum = agents.reduce((pre,cur)=>{
-            if(cur.status in pre){
-                pre[cur.status]++
-            }else{
-                pre[cur.status] = 1 
-            }
-            return pre
-            },{})
-        let typeNum = agents.reduce((pre,cur)=>{
-            if(cur.type in pre){
-                pre[cur.type]++
-            }else{
-                pre[cur.type] = 1 
-            }
-            return pre
-            },{})
-        console.log(statisticsNum); //{Alice: 2, Bob: 1, Tiff: 1, Bruce: 1}
         return (
-            <div className="content-container">
+            <div className="content-container" style={{minHeight:viewHeight}} >
                 <div>
-                    <ul className="statistics">
-                        <li>
-                            <div>
-                                <i className="icon icon-cog"></i>
-                                <span className="statistics-type">Building</span>
-                                <span className="statistics-count">{statisticsNum.building}</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <i className="icon icon-coffee"></i>
-                                <span className="statistics-type">Idle</span>
-                                <span className="statistics-count">{statisticsNum.idle}</span>
-                            </div>
-                        </li>
-                        <li>
-                            <ul>
-                                <li>
-                                    <span>ALL</span>
-                                    <span>{typeNum.physical + typeNum.virtual}</span>
-                                </li>
-                                <li>
-                                    <span>PHYSICAL</span>
-                                    <span>{typeNum.physical}</span>
-                                </li>
-                                <li>
-                                    <span>VIRTUAL</span>
-                                    <span>{typeNum.virtual}</span>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <Statistical statisticalData={statisticalData}></Statistical>
                     <div className="search">
                         <ul className="fl">
                             <li className={type == "" ? this.state.typeActive : ""} onClick={() => this.getListByType("")}>All</li>
@@ -191,7 +148,7 @@ class Home extends Component {
                         <span className="clear"></span>
                     </div>
                     <div>
-                        {agents.map((item, index) => {
+                        {agentsList.length > 0 ? agentsList.map((item, index) => {
                             return (
                                 <div key={index} className="content">
                                     <div className="fl content-left">
@@ -215,7 +172,7 @@ class Home extends Component {
                                         </ul>
                                         <ul className="con-bottom">
                                             <li>
-                                                <i onClick={() => this.handelAddDialog(item.id)} className="icon-plus"></i>
+                                                <i onClick={() => this.openAddDialog(item.id)} className="icon-plus"></i>
                                                 {item.resources.map((i, index) => {
                                                     return (
                                                         <span onClick={() => this.deleteHanlder(item.id, i)} key={index}>{i}<i className="icon-trash"></i></span>
@@ -225,29 +182,30 @@ class Home extends Component {
                                             <li className="fr">
                                                 <span>
                                                     <i className="icon-deny"></i>Deny
-                                         </span>
+                                                 </span>
                                             </li>
                                         </ul>
                                     </div>
                                     <span className="clear"></span>
                                 </div>
                             )
-                        })}
+                        }) : <h1>暂无数据</h1>}
                     </div>
                 </div>
-                {!this.props.dialogStatus ? <div className="add-dialog">
+                {!this.props.dialogStatus ?
+                <div className="add-dialog">
                     <ul>
-                        <i onClick={() => this.closeDialog()} className="fr icon-close"></i>
+                        <i onClick={() => this.closeAddDialog()} className="fr icon-close"></i>
                         <div className="clear"></div>
                         <li>
                             <p>Separate multiple resourec name with commas</p>
                         </li>
                         <li>
-                            <input placeholder="  input Value" onChange={this.handelChangeAddInput.bind(this)} defaultValue={this.state.inpValu} type="text" name="" id="" />
+                            <input placeholder=" input Value" onChange={this.handelChangeAddInput.bind(this)} defaultValue={this.state.inpValu} type="text" name="" id="" />
                         </li>
                         <li>
                             <span onClick={() => this.addHanlder()} className="add-btn">Add Resources</span>
-                            <span onClick={() => this.closeDialog()} className="cancel-btn">Cancel</span>
+                            <span onClick={() => this.closeAddDialog()} className="cancel-btn">Cancel</span>
                         </li>
                     </ul>
                 </div> : null}
@@ -255,5 +213,13 @@ class Home extends Component {
         )
     }
 }
-Home = connect(state => ({ menu: state.agentList, menuZIndex: state.menuZIndex, dialogStatus: state.dialogStatus }), { setAgentListAsync, setHistoryListAsync, setMenuZIndexSync, setAddDialogStatusSync })(Home)
-export default Home
+Content = connect(state => ({
+    agentsData: state.agentsData,
+    viewHeight:state.viewHeight,
+    dialogStatus: state.dialogStatus
+}),{
+    setAgentListAsync,
+    setHistoryListAsync, 
+    setAddDialogStatusSync
+})(Content)
+export default Content;

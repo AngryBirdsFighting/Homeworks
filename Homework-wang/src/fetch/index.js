@@ -35,7 +35,7 @@ class Fetch {
         this.reqConfig.method = param.method || "get";  
         if(param.data  && isEmptyByObj(param.data)){
             if(this.reqConfig.method === "get"){
-                param.url += `?_t=${ Date.parse(new Date())/1000 }`;
+                param.url += `?_t=${ Date.parse(new Date())/1000 }&`;
                 let i = 0
                 for (const key in param.data) {
                   if(param.data[key]){

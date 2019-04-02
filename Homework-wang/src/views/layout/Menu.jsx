@@ -1,33 +1,27 @@
 /*
  * @Author: Wang Chao 
- * @Date: 2019-01-21 20:47:14 
- * @Last Modified by: Wang Chao
- * @Last Modified time: 2019-03-29 10:21:53
  * @Description:  
  */
 import React,{Component} from "react"
 import { connect} from "react-redux";
-import { setMenuZIndexSync} from "../../redux/action/index.js";
-class Home extends Component{
-    state={
-        height:"",
-    }
-    componentWillMount() {
-        console.log(this.props)
-     }
+import { setMenuShowOrHiddenSync, setViewHeightSync} from "../../redux/action/index.js";
+class Menu extends Component{
      componentDidMount(){
-         this.setState({
-             height:document.documentElement.clientHeight + "px"
-         })
-         document.documentElement.clientWidth < 1024 ? this.props.setMenuZIndexSync(!this.props.menuZIndex) : null
+        let height =  document.documentElement.clientHeight
+        this.props.setViewHeightSync(height)
+        // document.documentElement.clientWidth < 1024 ? this.props.setMenuZIndexSync(!this.props.menuStatus) : null
     }
     render(){
-        console.log(this.props.menuZIndex )
-        let zIndex = this.props.menuZIndex ?  document.documentElement.clientWidth < 1024 ? 100 : 1 : -1
+        // let zIndex = this.props.menuZIndex ?  document.documentElement.clientWidth < 1024 ? 100 : 1 : -1;
+        let { viewHeight, historyList, menuStatus} = this.props;
+        let dispalyStr = menuStatus? "block" : "";
+        // 菜单高度需要减去footer高度
+        viewHeight -= 25;
+        viewHeight += "px"
         return(
-            <menu style={{height:this.state.height, zIndex: zIndex}} className="menu-container">
+            <menu style={{height:viewHeight, display:dispalyStr}} className="menu-container">
             <span className="btn-close">
-                 <i className="icon-close" onClick = {() => this.props.setMenuZIndexSync(!this.props.menuZIndex)}></i>
+                 <i className="icon-close" onClick = {() => this.props.setMenuShowOrHiddenSync(!this.props.menuStatus)}></i>
             </span>
                 <ul className="menu-ul">
                     <li className="active">
@@ -50,29 +44,21 @@ class Home extends Component{
                 <div className="history">
                     <p>History</p>
                     <ul>
-                        {this.props.historyList.length > 0 ? this.props.historyList.map(i => {
+                        {historyList.length > 0 ? historyList.map(i => {
                             return ( <li key={i}>{i}</li>)
                         }) : "空"}
-                       
-                        {/* <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
-                        <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
-                        <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
-                        <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
-                        <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
-                        <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
-                        <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
-                        <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
-                        <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
-                        <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
-                        <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
-                        <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li>
-                        <li>kashdgfkjsagfksjgfskfgksfgkfgjsdgfashgfhkesgrksegjkghektghkjet</li> */}
                     </ul>
                 </div>
-               
             </menu>
         )
     }
 }
-Home = connect(state =>({menu:state.agentList, menuZIndex: state.menuZIndex, historyList: state.historyList}), {setMenuZIndexSync})(Home)
-export default Home
+Menu = connect(state =>({
+    viewHeight:state.viewHeight,
+    menuStatus: state.menuStatus, 
+    historyList: state.historyList
+}), {
+    setMenuShowOrHiddenSync, 
+    setViewHeightSync
+})(Menu)
+export default Menu

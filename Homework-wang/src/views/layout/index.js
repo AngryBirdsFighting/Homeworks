@@ -1,8 +1,5 @@
 /*
  * @Author: Wang Chao 
- * @Date: 2019-01-21 20:47:14 
- * @Last Modified by: Wang Chao
- * @Last Modified time: 2019-03-29 10:38:36
  * @Description:  
  */
 import React,{Component} from "react"
@@ -11,14 +8,10 @@ import Menu from "./Menu.jsx"
 import Content from "./Content.jsx"
 import { connect} from "react-redux";
 class Main extends Component{
-    componentWillMount() {
-        console.log(this.props)
-     }
     render(){
         return(
             <div className="main">
             {!this.props.dialogStatus ?  <div className="layer"></div> : null}
-            
                 <div className="main-wrapper">
                     <Header/>
                     <div className="container">
@@ -33,6 +26,8 @@ class Main extends Component{
         )
     }
 }
-Main = connect(state =>({ dialogStatus: state.dialogStatus}), {})(Main)
+Main = connect(state =>({
+    dialogStatus: state.dialogStatus
+}), {})(Main)
 
 export default Main
