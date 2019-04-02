@@ -49,6 +49,10 @@ class Content extends Component {
             this.getList()
         }
     }
+    
+    mo(e){
+        e.preventDefault()
+    };
     // 删除资源
     deleteHanlder(id, str) {
         this.setState({
@@ -104,6 +108,7 @@ class Content extends Component {
     }
     // 打开新增窗口
     openAddDialog(id) {
+        document.addEventListener("touchmove",this.mo,false);//禁止页面滑动
         document.onmousewheel=function() {return false}
         this.setState({
             id: id
