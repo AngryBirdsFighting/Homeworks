@@ -23,7 +23,7 @@ module.exports = {
       "react"
     ],
     "rules": {
-      "quotes": [2, "single", "backtick"], //单引号
+      "quotes": [2, "double", {"allowTemplateLiterals": true}], //双引号
       "no-console": 0, //不禁用console
       "no-debugger": 2, //禁用debugger
       "no-var": 0, //对var警告
@@ -35,7 +35,7 @@ module.exports = {
       "no-underscore-dangle": 0, //标识符不能以_开头或结尾
       "no-alert": 2, //禁止使用alert confirm prompt
       "no-lone-blocks": 0, //禁止不必要的嵌套块
-      "no-class-assign": 2, //禁止给类赋值
+      "no-class-assign": 0, //禁止给类赋值
       "no-cond-assign": 2, //禁止在条件表达式中使用赋值语句
       "no-const-assign": 2, //禁止修改const声明的变量
       "no-delete-var": 2, //不能对var声明的变量使用delete操作符

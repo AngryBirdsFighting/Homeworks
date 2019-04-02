@@ -1,10 +1,10 @@
 
-import * as type from './type';
+import * as type from "./type";
 import Fetch from "../../fetch/index"
 let fetch = new Fetch()
 
 let requestData = (params) => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         let param = {
             method: params.method,
             url: params.url,
@@ -58,7 +58,7 @@ export const  setAgentListAsync = (params) => {
                     if(cur.status in pre){
                         pre[cur.status]++
                     }else{
-                        pre[cur.status] = 1 
+                        pre[cur.status] = 1
                     }
                     return pre
                     },{})
@@ -66,7 +66,7 @@ export const  setAgentListAsync = (params) => {
                     if(cur.type in pre){
                         pre[cur.type]++
                     }else{
-                        pre[cur.type] = 1 
+                        pre[cur.type] = 1
                     }
                     return pre
                     },{})
@@ -81,7 +81,7 @@ export const  setAgentListAsync = (params) => {
 // 异步添加history数据
 export const  setHistoryListAsync = (params) => {
     return (dispatch, getState) => {
-        requestData(params).then( res => {
+        requestData(params).then( () => {
             let states = getState()
             let index =  states.historyList.indexOf(params.data.name)
             if(index == -1){
