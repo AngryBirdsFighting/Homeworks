@@ -1,17 +1,17 @@
-import Config from "../config/"
-import { isEmptyByObj } from "../utils/tools";
+import Config from '../config/'
+import { isEmptyByObj } from '../utils/tools';
 class Fetch {
     constructor(){
         this.baseUrl = Config.baseUrl; 
         this.reqConfig = {
             credentials: 'include',
-            method: "",
+            method: '',
             headers: {
               'Accept': 'application/json',
               'Content-Type' : 'application/json'
             },
-            // mode: "cors",
-            cache: "no-cache"
+            // mode: 'cors',
+            cache: 'no-cache'
         }
     }
     // 增加超时限制
@@ -19,7 +19,7 @@ class Fetch {
         return  Promise.race([
             fetch(url,param),
             new Promise(function(resolve,reject){ 
-                setTimeout(()=> reject({status:"408"}), Config.overtime)
+                setTimeout(()=> reject({status:'408'}), Config.overtime)
             })
         ]).then( res=> {
             return res          
@@ -32,21 +32,20 @@ class Fetch {
      * @param {Object} param url接口，data请求参数， method 请求类型，不写为Get
      */
     async fetchAjax(param){ 
-        this.reqConfig.method = param.method || "get";  
+        this.reqConfig.method = param.method || 'get';  
         if(param.data  && isEmptyByObj(param.data)){
-            if(this.reqConfig.method === "get"){
+            if(this.reqConfig.method === 'get'){
                 param.url += `?_t=${ Date.parse(new Date())/1000 }&`;
                 let i = 0
                 for (const key in param.data) {
                   if(param.data[key]){
                     if(i !== 0 ){
-                      param.url += "&";
+                      param.url += '&';
                   }
                   if(param.data[key]){
                     param.url += `${key}=${param.data[key]}`
                   }
                   }
-                    
                     i++        
                 }
             } else {
@@ -63,7 +62,7 @@ class Fetch {
 
     // 错误判断
     judgeRes(res){
-        let message = ""
+        let message = ''
         switch (parseInt(res.status)) {
             case 302:
               message = '错误请求：找不到url请求（后台过滤）';
