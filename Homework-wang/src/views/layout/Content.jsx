@@ -51,6 +51,7 @@ class Content extends Component {
             this.getList()
         }
     }
+    // 禁止滑动
     mo(e){
         e.preventDefault()
     }
@@ -86,7 +87,7 @@ class Content extends Component {
         let data = this.props.agentsData.agentsList.find(item => {
             return item.id == this.state.id
         })
-        this.state.inpValu.split(",").map(item => {
+        this.state.inpValu.split(/[,，]/).map(item => {
             if (item) {
                 data.resources.push(item)
             }

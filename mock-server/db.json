@@ -8,7 +8,8 @@
       "ip": "192.168.1.102",
       "location": "/var/lib/cruise-agent",
       "resources": [
-        "dasd"
+        "dasd",
+        "dsad"
       ],
       "id": 4
     },
@@ -21,8 +22,7 @@
       "location": "/var/lib/cruise-agent",
       "resources": [
         "asdsad",
-        "dsadasd",
-        "5555"
+        "dsadasd"
       ],
       "id": 5
     },
