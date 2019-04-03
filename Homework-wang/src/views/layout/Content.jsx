@@ -103,6 +103,7 @@ class Content extends Component {
             errorText: ""
         })
         this.props.setAddDialogStatusSync(!this.props.dialogStatus)
+        document.onmousewheel=function() {return true}
         document.removeEventListener("touchmove",this.mo, { passive: false });//恢复页面滑动
     }
     // 绑定新增value
