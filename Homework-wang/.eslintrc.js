@@ -92,6 +92,9 @@ module.exports = {
       "arrow-spacing": 0 //=>的前/后括号
     },
     "settings": {
+      "react": {
+        "version": "detect"
+      },
       "import/ignore": [
         "node_modules"
       ]

@@ -1,22 +1,26 @@
 let path = require("path"), webpack = require("webpack")
 let HtmlWebpackPlugin = require("html-webpack-plugin")
+let MiniCssExtractPlugin = require("mini-css-extract-plugin")
+var DEBUG = process.env.NODE_ENV === 'development'
+
+let isExtract = DEBUG ? "style-loader" : MiniCssExtractPlugin.loader
 module.exports = {
-    mode:"development", 
+    mode: DEBUG ? "development" : "production", 
     entry:["@babel/polyfill","./src/index.js"],
     output:{
-        filename:'bundle.js',
+        filename:'[name].[chunkhash:8].js',
         path:path.resolve(__dirname, 'dist')
     },
     module:{
         rules:[
             {
                 test: /\.(sa|sc|c)ss$/,
-                use: ['style-loader', 'css-loader','postcss-loader', 'sass-loader']
+                use: [isExtract, 'css-loader','postcss-loader', 'sass-loader']
             },
             {
                 test:/.js$/,
-                exclude:/node_modules/,// 排除解析目录 优化打包速度
-                include:path.resolve('src'),// 指定解析目录 优化打包速度
+                exclude:/node_modules/,
+                include:path.resolve('src'),
                 use:[{
                     loader:"babel-loader",
                     options:{
@@ -29,8 +33,8 @@ module.exports = {
             },
             {
                 test:/.jsx$/,
-                exclude:/node_modules/,// 排除解析目录 优化打包速度
-                include:path.resolve('src'),// 指定解析目录 优化打包速度
+                exclude:/node_modules/,
+                include:path.resolve('src'),
                 use:[{
                     loader:"babel-loader",
                     options:{
@@ -62,17 +66,29 @@ module.exports = {
                     limit: 10000,
                 }
             },
-            // {   // 优化svg文件 
-            //     test: /\.svg$/,
-            //     use: ['svg-inline-loader']
-            // }
         ]
     },
     plugins:[
         new HtmlWebpackPlugin({
             template:"./index.html",
         }),
+        new MiniCssExtractPlugin({
+        　　filename: "[name].[chunkhash:8].css",
+        　　chunkFilename: "[id].css"
+        })
     ],
+    optimization: {
+    splitChunks: {
+        chunks: "all",
+        cacheGroups: {
+            // 打包第三方库
+            vendor: {
+            test: /[\/]node_modules[\/]/,
+            chunks: "initial" 
+          }
+        }
+      }
+    },
     devServer:{
         port:3000,
         open:true,

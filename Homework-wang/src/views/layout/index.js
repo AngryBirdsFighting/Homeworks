@@ -11,7 +11,7 @@ class Main extends Component{
     render(){
         return(
             <div className="main">
-            {!this.props.dialogStatus ?  <div className="layer"></div> : null}
+            {/* {!this.props.dialogStatus ?  <div className="layer"></div> : null} */}
                 <div className="main-wrapper">
                     <Header/>
                     <div className="container">

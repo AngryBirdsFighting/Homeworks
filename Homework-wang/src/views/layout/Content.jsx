@@ -16,6 +16,7 @@ class Content extends Component {
             name_like: "",
             type: ""
         },
+        errorText:"",
         typeActive: "active" // 选中类名
     }
     // eslint-disable-next-line react/no-deprecated
@@ -77,7 +78,9 @@ class Content extends Component {
     // 新增资源
     addHanlder() {
         if (!this.state.inpValu) {
-            // alert("请输入内容")
+            this.setState({
+                errorText: "不能为空"
+            })
             return
         }
         let data = this.props.agentsData.agentsList.find(item => {
@@ -95,10 +98,11 @@ class Content extends Component {
         }
         this.props.setHistoryListAsync(params)
         this.setState({
-            inpValu: ""
+            inpValu: "",
+            errorText: ""
         })
         this.props.setAddDialogStatusSync(!this.props.dialogStatus)
-        document.documentElement.style.overflow = "";
+        document.removeEventListener("touchmove",this.mo, { passive: false });//恢复页面滑动
     }
     // 绑定新增value
     handelChangeAddInput(e) {
@@ -108,8 +112,8 @@ class Content extends Component {
     }
     // 打开新增窗口
     openAddDialog(id) {
-        document.addEventListener("touchmove",this.mo,false);//禁止页面滑动
         document.onmousewheel=function() {return false}
+        document.addEventListener("touchmove",this.mo, { passive: false });//禁止页面滑动
         this.setState({
             id: id
         })
@@ -117,7 +121,12 @@ class Content extends Component {
     }
     // 关闭新增窗口
     closeAddDialog() {
+        this.setState({
+            inpValu: "",
+            errorText: ""
+        })
         document.onmousewheel=function() {return true}
+        document.removeEventListener("touchmove",this.mo, { passive: false });//恢复页面滑动
         this.props.setAddDialogStatusSync(!this.props.dialogStatus)
 
     }
@@ -214,6 +223,7 @@ class Content extends Component {
                     </div>
                 </div>
                 {!this.props.dialogStatus ?
+                <div className="layer" >
                 <div className="add-dialog">
                     <ul>
                         <i  className="fr icon-close"
@@ -231,6 +241,7 @@ class Content extends Component {
                                 placeholder=" input Value"
                                 type="text"
                             />
+                            <p style={{color:"red", height:"19px"}}>{this.state.errorText}</p>
                         </li>
                         <li>
                             <span className="add-btn"
@@ -241,7 +252,9 @@ class Content extends Component {
                             >Cancel</span>
                         </li>
                     </ul>
-                </div> : null}
+                </div>
+                </div>
+                 : null}
             </div>
         )
     }
