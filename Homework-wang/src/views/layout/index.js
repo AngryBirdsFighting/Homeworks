@@ -1,6 +1,6 @@
 /*
- * @Author: Wang Chao 
- * @Description:  
+ * @Author: Wang Chao
+ * @Description:
  */
 import React,{Component} from "react"
 import Header from "./Header.jsx"

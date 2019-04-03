@@ -1,6 +1,6 @@
 /*
- * @Author: Wang Chao 
- * @Description:  
+ * @Author: Wang Chao
+ * @Description:
  */
 import React, { Component } from "react"
 import window from "../../assets/os icons/windows.png"
@@ -18,6 +18,7 @@ class Content extends Component {
         },
         typeActive: "active" // 选中类名
     }
+    // eslint-disable-next-line react/no-deprecated
     componentWillMount() {
         this.getList()
     }
@@ -66,7 +67,7 @@ class Content extends Component {
             let params = {
                 method: "put",
                 url: "/agents/" + this.state.id,
-                data: data,
+                data: data
             }
             this.props.setHistoryListAsync(params)
             this.setState({
@@ -77,7 +78,7 @@ class Content extends Component {
     // 新增资源
     addHanlder() {
         if (!this.state.inpValu) {
-            alert("请输入内容")
+            // alert("请输入内容")
             return
         }
         let data = this.props.agentsData.agentsList.find(item => {
@@ -91,14 +92,14 @@ class Content extends Component {
         let params = {
             method: "put",
             url: "/agents/" + this.state.id,
-            data: data,
+            data: data
         }
         this.props.setHistoryListAsync(params)
         this.setState({
             inpValu: ""
         })
         this.props.setAddDialogStatusSync(!this.props.dialogStatus)
-        document.documentElement.style.overflow = '';
+        document.documentElement.style.overflow = "";
     }
     // 绑定新增value
     handelChangeAddInput(e) {
@@ -119,7 +120,7 @@ class Content extends Component {
     closeAddDialog() {
         document.onmousewheel=function() {return true}
         this.props.setAddDialogStatusSync(!this.props.dialogStatus)
-        
+
     }
     render() {
         let { viewHeight } = this.props;
@@ -129,21 +130,29 @@ class Content extends Component {
         let {agentsList, statisticalData} = this.props.agentsData;
         let { type } = this.state.listQurey;
         return (
-            <div className="content-container" style={{minHeight:viewHeight}} >
+            <div className="content-container"
+                style={{minHeight:viewHeight}}
+            >
                 <div>
                     <Statistical statisticalData={statisticalData}></Statistical>
                     <div className="search">
                         <ul className="fl">
-                            <li className={type == "" ? this.state.typeActive : ""} onClick={() => this.getListByType("")}>All</li>
-                            <li className={type == "physical" ? this.state.typeActive : ""} onClick={() => this.getListByType("physical")} >Physical</li>
-                            <li className={type == "virtual" ? this.state.typeActive : ""} onClick={() => this.getListByType("virtual")} >Virtual</li>
+                            <li className={type == "" ? this.state.typeActive : ""}
+                                onClick={() => this.getListByType("")}
+                            >All</li>
+                            <li className={type == "physical" ? this.state.typeActive : ""}
+                                onClick={() => this.getListByType("physical")}
+                            >Physical</li>
+                            <li className={type == "virtual" ? this.state.typeActive : ""}
+                                onClick={() => this.getListByType("virtual")}
+                            >Virtual</li>
                         </ul>
                         <div className="fl search-box">
                             <input
-                                placeholder="please input name.  Enter"
                                 defaultValue={this.state.listQurey.q}
-                                type="text"
                                 onKeyDown={this.getListByName.bind(this)}
+                                placeholder="please input name.  Enter"
+                                type="text"
                             ></input>
                         </div>
                         <div className="fr search-icon">
@@ -155,9 +164,13 @@ class Content extends Component {
                     <div>
                         {agentsList.length > 0 ? agentsList.map((item, index) => {
                             return (
-                                <div key={index} className="content">
+                                <div  className="content"
+                                    key={index}
+                                >
                                     <div className="fl content-left">
-                                        <img src={window} className="window"></img>
+                                        <img className="window"
+                                            src={window}
+                                        ></img>
                                     </div>
                                     <div className="fl content-right">
                                         <ul>
@@ -177,10 +190,14 @@ class Content extends Component {
                                         </ul>
                                         <ul className="con-bottom">
                                             <li>
-                                                <i onClick={() => this.openAddDialog(item.id)} className="icon-plus"></i>
+                                                <i className="icon-plus"
+                                                    onClick={() => this.openAddDialog(item.id)}
+                                                ></i>
                                                 {item.resources.map((i, index) => {
                                                     return (
-                                                        <span onClick={() => this.deleteHanlder(item.id, i)} key={index}>{i}<i className="icon-trash"></i></span>
+                                                        <span key={index}
+                                                            onClick={() => this.deleteHanlder(item.id, i)}
+                                                        >{i}<i className="icon-trash"></i></span>
                                                     )
                                                 })}
                                             </li>
@@ -200,17 +217,29 @@ class Content extends Component {
                 {!this.props.dialogStatus ?
                 <div className="add-dialog">
                     <ul>
-                        <i onClick={() => this.closeAddDialog()} className="fr icon-close"></i>
+                        <i  className="fr icon-close"
+                            onClick={() => this.closeAddDialog()}
+                        ></i>
                         <div className="clear"></div>
                         <li>
                             <p>Separate multiple resourec name with commas</p>
                         </li>
                         <li>
-                            <input placeholder=" input Value" onChange={this.handelChangeAddInput.bind(this)} defaultValue={this.state.inpValu} type="text" name="" id="" />
+                            <input defaultValue={this.state.inpValu}
+                                id=""
+                                name=""
+                                onChange={this.handelChangeAddInput.bind(this)}
+                                placeholder=" input Value"
+                                type="text"
+                            />
                         </li>
                         <li>
-                            <span onClick={() => this.addHanlder()} className="add-btn">Add Resources</span>
-                            <span onClick={() => this.closeAddDialog()} className="cancel-btn">Cancel</span>
+                            <span className="add-btn"
+                                onClick={() => this.addHanlder()}
+                            >Add Resources</span>
+                            <span  className="cancel-btn"
+                                onClick={() => this.closeAddDialog()}
+                            >Cancel</span>
                         </li>
                     </ul>
                 </div> : null}
@@ -224,7 +253,7 @@ Content = connect(state => ({
     dialogStatus: state.dialogStatus
 }),{
     setAgentListAsync,
-    setHistoryListAsync, 
+    setHistoryListAsync,
     setAddDialogStatusSync
 })(Content)
 export default Content;

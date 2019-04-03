@@ -1,6 +1,6 @@
 /*
- * @Author: Wang Chao 
- * @Description:  
+ * @Author: Wang Chao
+ * @Description:
  */
 import React,{Component} from "react"
 import { connect} from "react-redux";
@@ -19,9 +19,13 @@ class Menu extends Component{
         viewHeight -= 25;
         viewHeight += "px"
         return(
-            <menu style={{height:viewHeight, display:dispalyStr}} className="menu-container">
+            <menu className="menu-container"
+                style={{height:viewHeight, display:dispalyStr}}
+            >
             <span className="btn-close">
-                 <i className="icon-close" onClick = {() => this.props.setMenuShowOrHiddenSync(!this.props.menuStatus)}></i>
+                 <i className="icon-close"
+                     onClick={() => this.props.setMenuShowOrHiddenSync(!this.props.menuStatus)}
+                 ></i>
             </span>
                 <ul className="menu-ul">
                     <li className="active">
@@ -55,10 +59,10 @@ class Menu extends Component{
 }
 Menu = connect(state =>({
     viewHeight:state.viewHeight,
-    menuStatus: state.menuStatus, 
+    menuStatus: state.menuStatus,
     historyList: state.historyList
 }), {
-    setMenuShowOrHiddenSync, 
+    setMenuShowOrHiddenSync,
     setViewHeightSync
 })(Menu)
 export default Menu
