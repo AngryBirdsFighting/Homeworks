@@ -2,11 +2,11 @@
  * @Author: Wang Chao
  * @Description:
  */
-import React, { Component } from "react"
-import window from "../../assets/os icons/windows.png"
+import React, { Component } from "react";
+import window from "../../assets/os icons/windows.png";
 import { connect } from "react-redux";
 import { setAgentListAsync, setHistoryListAsync, setAddDialogStatusSync } from "../../redux/action/index.js";
-import Statistical from "../../components/Statistical.jsx"
+import Statistical from "../../components/Statistical.jsx";
 
 class Content extends Component {
     state = {
@@ -50,10 +50,9 @@ class Content extends Component {
             this.getList()
         }
     }
-    
     mo(e){
         e.preventDefault()
-    };
+    }
     // 删除资源
     deleteHanlder(id, str) {
         this.setState({
